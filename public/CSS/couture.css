@@ -1,0 +1,81 @@
+:root{
+    --black:#2c2c54;
+}
+.ActionService{
+    border-top: var(--border);
+}
+.searchDt{
+    display: block;
+    background-color: var(--blue);
+    padding: 2rem;
+}
+.searchDt form .input_form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.searchDt form .input_form input{
+    border: var(--border);
+    height: 5rem;
+    width: 20rem;
+    border-radius: .5rem;
+    padding: .5rem;
+    font-size: 1.5rem;
+}
+.operation{
+    display: block;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+.operation .resultAction{
+    display: block;
+    padding: 2rem;
+}
+.operation .resultAction .box_result{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: var(--border);
+    border-radius:.5rem;
+    background-color: white;
+    padding: 2rem 9%;
+    margin-bottom: 1rem;
+}
+.operation .resultAction .box_result .detail_fashion{
+    display: block;
+}
+.operation .resultAction .box_result .detail_fashion span{
+    color: var(--black);
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+
+.operation .resultAction .box_result .detail_fashion h3{
+    color: var(--black);
+    font-size: 1.7rem;
+}
+
+
+.operation .resultAction .box_result .detail_fashion p{
+    color: #282727;
+    font-size: 1.3rem;
+}
+
+
+.operation .resultAction .box_result .detail_fashion #contact{
+    font-weight: bolder;
+}
+
+
+
+@media(max-width:768px){
+    .searchDt form .input_form{
+        display: block;
+    }
+    .searchDt form .input_form input{
+       display: block;
+       width: 100%;
+       margin-top: .5rem;
+    }
+}

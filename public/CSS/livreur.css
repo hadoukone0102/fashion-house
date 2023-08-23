@@ -1,0 +1,81 @@
+.livreur{
+    border-top: var(--border);
+}
+.livreur_ctn{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem 5%;
+    margin-right: 2rem;
+}
+.livreur_ctn .img_livreur{
+    min-width: 30rem;
+    height:40rem;
+}
+.livreur_ctn .img_livreur img{
+    width: 100%;
+    height:100%;
+}
+.details_livreur{
+    max-width: 50rem;
+    display: block;
+    text-align: center;
+}
+.details_livreur p{
+    font-size: 1.5rem;
+    color: var(--black);
+
+}
+/* section partenaire livreur */
+.partenaire{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.partenaire .grild_parte{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(1,auto);
+    gap: 20px;
+}
+.partenaire .grild_parte .box_parte{
+    /* border: var(--border); */
+    padding: 2rem;
+    margin: 1rem;
+}
+.boite_parte{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_parte{
+    max-width: 20rem;
+    height: 20rem;
+}
+.img_parte img{
+    max-width: 100%;
+    height: 100%;
+}
+.partenaire .grild_parte .box_parte .detail_parte{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.partenaire .grild_parte .box_parte .detail_parte p{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-align: center;
+}
+
+/* section partenaire livreur */
+
+@media(max-width:768px){
+    .livreur_ctn{
+        display: block;
+    }
+    .partenaire .grild_parte{
+        display: block;
+        margin: .5rem;
+    }
+}

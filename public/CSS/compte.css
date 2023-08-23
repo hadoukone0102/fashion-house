@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    transition: all .3s ease;
+    list-style-type: none;
+}
+:root{
+    --black:#2c2c54;
+    --blue :#09F8D4;
+    --orange:#FFC300;
+    --rouge:#F71E49;
+    --border:.1px solid rgba(0,0,0,.2);
+    --shadow:1px 1px 3px rgba(0,0,0,.12),1px 1px 3px rgba(0,0,0,.23);
+}
+*::selection{
+    background-color: var(--black);
+    color: white;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7.6rem;
+    overflow-x: hidden;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: auto;
+}
+.content_form_main{
+    display: block;
+    padding: 2rem;
+    border: var(--border);
+    width: auto;
+    height: auto;
+}
+.content_form_main form{
+    display: flex;
+    margin: 2rem;
+}
+.content_form_main form .premier, .second{
+    border: var(--border);
+    margin: 1rem;
+    display: block;
+}
+.content_form_main form .premier.start_none{
+    display: none;
+}
+.content_form_main form .second{
+    display: none;
+}
+.content_form_main form .second.start_show{
+    display: block;
+}
+.content_form_main .form{
+    display: block;
+}
+
+.content_form_main .form .input-form-inscrip{
+    display: flex;
+    margin: 1rem;
+    padding: .5rem;
+}
+.content_form_main .form .input-form-inscrip .input-form-1{
+    display: block;
+    margin: .5rem;
+}
+.content_form_main .form .input-form-inscrip .input-form-1 label{
+    display: block;
+    font-size: 1.3rem;
+    color: var(--black);
+    margin: .5rem;
+}
+.content_form_main .form .input-form-inscrip a{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 1.5rem;
+}
+.content_form_main .form .input-form-inscrip .input-form-1 input{
+    min-width: 30rem;
+    height: 5rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.content_form_main .form .input-form-inscrip .input-form-1 select{
+    min-width: 30rem;
+    height: 5rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+
+
+
+.container .first-formulaire{
+    display: flex;
+    /* margin-right: 2rem; */
+}
+.container .first-formulaire .content_form_main{
+    margin: 2rem;
+}
+/* #first_form{
+    
+} */
+#second_form{
+    display: none;
+}
+#first_form.start_none{
+    display: none;
+}
+#second_form.start_show{
+    display: block;
+}
+
+/* 
+#first_form.start_show{
+    display: block;
+} */
+
+
+#second_form.start_show{
+    display: block;
+}
+
+#second_form.start_none{
+    display: none;
+}
+
+@media(max-width:1200px){
+    html{
+        font-size: 55%;
+    }
+}
+
+@media(max-width:900px){
+    
+}
+
+@media(max-width:768px){
+    .container{
+        display: block;
+    }
+    .content_form_main .form .input-form-inscrip{
+        display: block;
+    }
+    .content_form_main .form .input-form-inscrip .btn{
+        display: block;
+    }
+    .container .first-formulaire {
+        display: block;
+    }
+}
+
+@media(max-width:500px){
+    
+}
+
+@media(max-width:450px){
+    html{
+        font-size: 50%;
+    }
+}
