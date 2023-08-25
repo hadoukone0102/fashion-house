@@ -59,26 +59,26 @@ html{
 .content_form_main form .second.start_show{
     display: block;
 }
-.content_form_main .form{
+.content_form_main .client{
     display: block;
 }
 
-.content_form_main .form .input-form-inscrip{
+.content_form_main .client .input-form-inscrip{
     display: flex;
     margin: 1rem;
     padding: .5rem;
 }
-.content_form_main .form .input-form-inscrip .input-form-1{
+.content_form_main .client .input-form-inscrip .input-form-1{
     display: block;
     margin: .5rem;
 }
-.content_form_main .form .input-form-inscrip .input-form-1 label{
+.content_form_main .client .input-form-inscrip .input-form-1 label{
     display: block;
     font-size: 1.3rem;
     color: var(--black);
     margin: .5rem;
 }
-.content_form_main .form .input-form-inscrip a{
+.content_form_main .client .input-form-inscrip a{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -87,13 +87,13 @@ html{
     color: var(--black);
     font-size: 1.5rem;
 }
-.content_form_main .form .input-form-inscrip .input-form-1 input{
+.content_form_main .client .input-form-inscrip .input-form-1 input{
     min-width: 30rem;
     height: 5rem;
     padding: 1rem;
     font-size: 1.5rem;
 }
-.content_form_main .form .input-form-inscrip .input-form-1 select{
+.content_form_main .client .input-form-inscrip .input-form-1 select{
     min-width: 30rem;
     height: 5rem;
     padding: 1rem;

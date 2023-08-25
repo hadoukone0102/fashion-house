@@ -87,7 +87,7 @@
                 </div>
                 <div class="input-form-inscrip">
                     <button type="submit" class="btn">Enregistrer</button>
-                        <a href="/index">Se Connecté</a>
+                        <a href="/">Se Connecté</a>
                 </div>
             </form>
         </div>

@@ -61,6 +61,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // se connecté si il a déja un compte professionnel 
+    Route::get('userCompte', [FashionHouseController::class,'Se_conneter_compte_exist'])->name('user.exist');
+    Route::post('/connect-user', [FashionHouseController::class,'conncter_utilisateur'])->name('user.connect');
+        
 });
 
 require __DIR__.'/auth.php';

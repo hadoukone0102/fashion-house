@@ -83,7 +83,7 @@ class FashionHouseController extends Controller
         $post->mdp = $data['mdp']; 
         $post->save();
         
-        return redirect('/index')->with('message', 'Données enregistrées avec succès !');
+        return redirect('/')->with('message', 'Données enregistrées avec succès !');
 
         // Traitez les données, enregistrez-les en base de données, etc.
         // return view('Fashion.traitement', ['donnees' => $data]);
@@ -282,6 +282,28 @@ class FashionHouseController extends Controller
     public function showUserProfile($id) {
         $user = Fashion::findOrFail($id); // Récupère l'utilisateur avec l'ID spécifié
         return view('welcome', ['userkey' => $user]);
+    }
+
+
+    public function Se_conneter_compte_exist(){
+
+        return view('Existes.exist');
+    }
+    public function conncter_utilisateur(Request $request){
+        $user_identiter = $request->validate([
+            'email'=>'required|string',
+            'password'=>'required|string',
+        ],[
+            'email.required'=>'champ vide',
+            'password.required'=>'mot de passe vide'
+        ]);
+        $liv =livreurs::all();
+        $fshn = Fashion::all();
+        $clt = Posts::all();
+        dd($liv,$fshn,$clt);
+        return [
+            'data'=> $user_identiter
+        ];
     }
 
 }
