@@ -297,13 +297,35 @@ class FashionHouseController extends Controller
             'email.required'=>'champ vide',
             'password.required'=>'mot de passe vide'
         ]);
-        $liv =livreurs::all();
-        $fshn = Fashion::all();
-        $clt = Posts::all();
-        dd($liv,$fshn,$clt);
-        return [
-            'data'=> $user_identiter
-        ];
+        //recherche dans la table livreur 
+        $liv =livreurs::where('email_livreur',$user_identiter['email'])
+                        ->where('mdp_livreur',$user_identiter['password'])
+                        ->first();
+
+        //recherce dans la table fashion 
+        $fshn = Fashion::where('email',$user_identiter['email'])
+                        ->where('mdp',$user_identiter['password'])
+                        ->first();
+
+        // Recherche dans la table Posts
+        $clt = Posts::where('email',$user_identiter['email'])
+                    ->where('mdp',$user_identiter['password'])
+                    ->first();
+
+        //verification
+        if($liv){
+            auth()->login($liv);
+            return redirect('/');
+        }elseif($fshn){
+            auth()->login($fshn);
+            redirect('/');
+        }elseif($clt){
+            auth()->login($clt);
+            redirect('/');
+        }
+
+        // dd($liv,$fshn,$clt);
+        return back()->withInput()->withErrors(['email'=>"les information de connection sont incorrectes"]);
     }
 
 }
