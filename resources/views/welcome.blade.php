@@ -46,10 +46,16 @@
     <!-- <div class="produits_ctn"> -->
         <div class="grilds_main">
             @if ($produits)
+            {{-- {{ $userName = auth()->user()->email}} --}}
                 @foreach ($produits as $prod)
                 <div class="grilds_produits">
                     <div class="img_prod">
-                        <img src="images/{{$prod->prod}}" alt="logo produit">
+                    {{-- @php
+                        $trimmedUserName = trim($userName, '/');
+                        $imagePath = $trimmedUserName . '/' . $prod->prod;
+                    @endphp
+                    <img src="{{ asset($imagePath) }}" alt="logo produit"> --}}
+                    <img src="images/{{$prod->prod}}" alt="logo produit">
                     </div>
                     <div class="decoration">
                         <div class="decora">
@@ -58,7 +64,6 @@
                             <i class="fa regular fa-eye"></i>
                             <i class="fa-solid fa-shirt"></i>
                         </div>
-                        
                     </div>
                     <a href="#" class="btn">joindre le Couturier</a>
                 </div>

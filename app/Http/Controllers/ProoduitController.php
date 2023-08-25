@@ -14,7 +14,13 @@ class ProoduitController extends Controller
     //pour les produits
 
     public function CreateProduct(Request $request){
-       
+
+        $user = auth()->user();
+        $userName = $user->email;
+        $folderPath = public_path($userName);
+        if (!file_exists($folderPath)) {
+            mkdir($folderPath);
+        }
         $produits = $request->validate([
 
             'email' => 'required|string',
@@ -37,7 +43,7 @@ class ProoduitController extends Controller
         ]);
 
         $imageName = time().'_'.$produits['prod']->getClientOriginalName();
-        $chemin = $produits['prod']->move(public_path('images'),$imageName);
+        $chemin = $produits['prod']->move($folderPath , $imageName);
         $url_absolute = $chemin->getPathname();
         $stock_bd = $chemin->getBasename();
         $pathinfo = pathinfo($stock_bd);
