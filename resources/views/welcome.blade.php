@@ -45,12 +45,11 @@
 <section class="produit" id="produit">
     <!-- <div class="produits_ctn"> -->
         <div class="grilds_main">
-            {{-- @if ($produits)
+            @if ($produits)
                 @foreach ($produits as $prod)
                 <div class="grilds_produits">
                     <div class="img_prod">
-                        <a href="#">{{ $prod->prod }}</a>
-                        <img src="{{$prod->prod}}" alt="logo produit">
+                        <img src="images/{{$prod->prod}}" alt="logo produit">
                     </div>
                     <div class="decoration">
                         <div class="decora">
@@ -64,9 +63,55 @@
                     <a href="#" class="btn">joindre le Couturier</a>
                 </div>
                 @endforeach
+                    
+            @else
+                    
+                <div class="grilds_produits">
+                    <div class="img_prod">
+                        <img src="img/prod/03.png" alt="logo produit">
+                    </div>
+                    <div class="decoration">
+                        <div class="decora">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa regular fa-eye"></i>
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">joindre le Couturier</a>
+                </div>
+                <div class="grilds_produits">
+                    <div class="img_prod">
+                        <img src="img/prod/04.png" alt="logo produit">
+                    </div>
+                    <div class="decoration">
+                        <div class="decora">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa regular fa-eye"></i>
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">joindre le Couturier</a>
+                </div>
+                <div class="grilds_produits">
+                    <div class="img_prod">
+                        <img src="img/prod/05.png" alt="logo produit">
+                    </div>
+                    <div class="decoration">
+                        <div class="decora">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa regular fa-eye"></i>
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">joindre le Couturier</a>
+                </div>
                 
-            @endif --}}
-            <div class="grilds_produits">
+            @endif
+
+            {{-- <div class="grilds_produits">
                 <div class="img_prod">
                     <img src="img/prod/01.png" alt="logo produit">
                 </div>
@@ -150,7 +195,8 @@
                     </div>
                 </div>
                 <a href="#" class="btn">joindre le Couturier</a>
-            </div>
+            </div> --}}
+
         <!-- </div> -->
     </div>
 </section>

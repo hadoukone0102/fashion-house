@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('numero_commande');
             $table->string('nom_produit');
             $table->string('prix');
-            $table->string('prod');
+            $table->string('prod')->unique();
             $table->longText('description');
             $table->timestamps();
         });

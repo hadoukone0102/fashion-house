@@ -1,5 +1,6 @@
 <div>
     <h3 class="text-center">Liste des Produits</h3>
+    @if($products->count() > 0)
     <table class="table">
         <thead>
           <tr>
@@ -12,7 +13,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+         
+          @foreach ($products as $product)
+                    <tr>
+                        <th scope="row">{{ $product->nom_p}}</th>
+                        <td>{{$product->prix}}</td>
+                        <td>{{$product->description}}</td>
+                        <td>@{{$product->timestamps}}</td>
+                        <td>@twitter</td>
+                        <td>
+                            <a href="#" class="btn btn-info">Modifier</a>
+                            <a href="#" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+          @endforeach
+
+
+          {{-- <tr>
             <th scope="row">1</th>
             <td>Mark</td>
             <td>Otto</td>
@@ -43,8 +60,9 @@
                 <a href="#" class="btn btn-info">Modifier</a>
                 <a href="#" class="btn btn-danger">Supprimer</a>
             </td>
-          </tr>
+          </tr> --}}
           
         </tbody>
       </table>
+    @endif
 </div>

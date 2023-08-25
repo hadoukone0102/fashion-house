@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FashionHouseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProoduitController;
 use App\Models\Fashion;
@@ -19,16 +20,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function (Request $request) {
-    $url = $request->url();
-    $lastSegment = Str::of($url)->afterLast('/');
-    $data_produit = produits::all();
-    return view('welcome',[
-        'produits'=>$data_produit,
-        'request' =>$lastSegment
-    ]);
-});
 
 
 Route::get('/index', [FashionHouseController::class, 'Main_page']);
@@ -50,25 +41,23 @@ Route::get('/myfashion/{id}', [FashionHouseController::class, 'showUserProfile']
 
 // information pour enregistremnt d'un produit
 Route::post('/produits', [ProoduitController::class,'CreateProduct']);
+Route::get('/produit/delete/{id}',  [ProoduitController::class,'delete'])->name('produit.delete');
 
 
-Route::get('/test', function(Request $request){
-    $a = new Fashion();
-    $b = Fashion::all([
-        'id','nom','prenom','ville','quartier'
-    ]);
-    return $b;
-});
+Route::get('/test',[ProoduitController::class,'getProduct'] );
 
 
 
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+     //affichage des éléments
+     $data_produit = produits::all();
+    return view('dashboard',['produits' => $data_produit]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/',[HomeController::class,'walcome_f_h']);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
