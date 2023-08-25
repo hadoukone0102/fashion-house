@@ -65,7 +65,7 @@
                             <i class="fa-solid fa-shirt"></i>
                         </div>
                     </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
+                    <a href="{{ route('myfashion.fave', ['id' => $prod->id])}}" class="btn">joindre le Couturier</a>
                 </div>
                 @endforeach
                     

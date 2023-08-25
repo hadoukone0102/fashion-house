@@ -281,7 +281,7 @@ class FashionHouseController extends Controller
     // methode pour le profils de l'utilisateur 
     public function showUserProfile($id) {
         $user = Fashion::findOrFail($id); // Récupère l'utilisateur avec l'ID spécifié
-        return view('Fashion.user_profile', ['userkey' => $user]);
+        return view('welcome', ['userkey' => $user]);
     }
 
 }

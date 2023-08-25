@@ -37,7 +37,7 @@ Route::post('/action_couture', [FashionHouseController::class, 'Traitement_coutu
 Route::post('/myfashion',[FashionHouseController::class,'Search_fashion']);
 
 // information sur le rpfils de l'utiisateur connecté 
-Route::get('/myfashion/{id}', [FashionHouseController::class, 'showUserProfile']);
+Route::get('/myfashion/{id}', [FashionHouseController::class, 'showUserProfile'])->name('myfashion.fave');
 
 // information pour enregistremnt d'un produit
 Route::post('/produits', [ProoduitController::class,'CreateProduct']);
@@ -57,7 +57,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/',[HomeController::class,'walcome_f_h']);
+    Route::get('/',[HomeController::class,'walcome_f_h'])->name('welcome');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
