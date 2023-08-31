@@ -219,12 +219,12 @@
                     @foreach ($produits as $prod)
                     <div class="grilds_produits">
                         <div class="img_prod">
-                        {{-- @php
+                        @php
                             $trimmedUserName = trim($userName, '/');
                             $imagePath = $trimmedUserName . '/' . $prod->prod;
                         @endphp
-                        <img src="{{ asset($imagePath) }}" alt="logo produit"> --}}
-                        <img src="images/{{$prod->prod}}" alt="logo produit">
+                        <img src="{{ asset($imagePath) }}" alt="logo produit">
+                        {{-- <img src="images/{{$prod->prod}}" alt="logo produit"> --}}
                         </div>
                         <div class="decoration">
                             <div class="decora">

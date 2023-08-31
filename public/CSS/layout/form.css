@@ -1,3 +1,13 @@
-.titre_form{
-    color: red;
+#link_action{
+    cursor: pointer;
+    color: #2c2c54;
+}
+#link_action:hover{
+    border-bottom: .5rem solid #2ecc71;
+}
+#formulaire_produits{
+    display: none;
+}
+#formulaire_produits.active{
+    display: block;
 }

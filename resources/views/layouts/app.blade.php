@@ -8,7 +8,7 @@
         <title>Fashion House</title>
         <!-- line CSS -->
         <link rel="stylesheet" href="CSS/layout/form.css">
-
+        <script src="CSS/layout/dashboad.js" defer></script>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

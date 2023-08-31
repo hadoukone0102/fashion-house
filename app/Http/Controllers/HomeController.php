@@ -40,8 +40,8 @@ class HomeController extends Controller
         //$data_users = Fashion::where('email','kone@gmail.com')->first();
             return view('welcome',[
                 'user_co' => $user_co,
-                    'produits' => $data_produit,
-                    'request' => $lastSegment
-                ]);
+                'produits' => $data_produit,
+                'request' => $lastSegment
+            ]);
     }
 }

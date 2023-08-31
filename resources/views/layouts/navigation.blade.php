@@ -15,12 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('link1')" :active="request()->routeIs('link1')">
-                        {{ __('Link 1') }}
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link id="link_action">
+                        {{ __('Add product') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('link2')" :active="request()->routeIs('link2')">
-                        {{ __('Link 2') }}
-                    </x-nav-link> --}}
                 </div>
             </div>
 
