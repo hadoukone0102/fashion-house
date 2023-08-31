@@ -25,5 +25,6 @@ class Fashion extends Model
         'annee_exp',
         'domaine',
         'commentaire',
+        'isfashion',
     ];
 }

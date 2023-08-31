@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Fashion;
 use App\Models\livreurs;
 use App\Models\Posts;
+// use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,7 +14,6 @@ class FashionHouseController extends Controller
 {
     
     // ma fonction qui va lister tous les etudians
-
     public function Main_page(Request $request){
         $url = $request->url();
         $path = parse_url($url,PHP_URL_PATH);
@@ -72,6 +73,7 @@ class FashionHouseController extends Controller
         if($IlExiste){
             return back()->withInput()->withErrors(['email' =>'Cette addresse Email existe déja']);
         }
+        $user_co = Posts::where('email', auth()->user()->email)->first();
         $post = new Posts();
     
         $post->nom = $data['nom'];
@@ -83,7 +85,7 @@ class FashionHouseController extends Controller
         $post->mdp = $data['mdp']; 
         $post->save();
         
-        return redirect('/')->with('message', 'Données enregistrées avec succès !');
+        return redirect('/')->with('user_co', $user_co);
 
         // Traitez les données, enregistrez-les en base de données, etc.
         // return view('Fashion.traitement', ['donnees' => $data]);
@@ -215,15 +217,19 @@ class FashionHouseController extends Controller
         $data_ctrs->annee_exp = $data_fashion['annee_exp'];
         $data_ctrs->domaine = $data_fashion['domaine'];
         $data_ctrs->commentaire = $data_fashion['commentaire'];
+        $data_ctrs->isfashion = "1";
+        $data_ctrs->save();
+        
+        Session::put('couturiers', $data_ctrs);
+        // return redirect('/');
+        return redirect('/index');
 
-        //$data_ctrs->save();
-
-        return view('Fashion.Action_couture', [
-            'data_couture' => $data_fashion,
-            'chemin_piece' => $url_chemin_piece,
-            'chemin_img_entreprise' => $url_chemin_image_user,
-            'chemin_certif_der' => $url_chemin_certif_user,
-        ]);
+        // return view('Fashion.Action_couture', [
+        //     'data_couture' => $data_fashion,
+        //     'chemin_piece' => $url_chemin_piece,
+        //     'chemin_img_entreprise' => $url_chemin_image_user,
+        //     'chemin_certif_der' => $url_chemin_certif_user,
+        // ]);
 
     }
 

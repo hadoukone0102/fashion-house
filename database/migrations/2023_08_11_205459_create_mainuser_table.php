@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('annee_exp');
             $table->string('domaine');
             $table->string('commentaire');
+            $table->string('isfashion');
             $table->timestamps();
         });
     }

@@ -41,6 +41,7 @@
             <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
             <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
         </div>
+
         {{-- <div class="">
     @if (Route::has('login'))
         <div class="">
@@ -53,13 +54,19 @@
                 @endif
             @endauth
         </div>
-    @endif
-</div> --}}
+      @endif
+  </div> --}}
+
         <nav class="navBar_link">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="">Profils</a>
-                    <a href="#" class="inscription btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscription">Compte professionnel</a>
+                    <a style="display: none" href="{{ url('/dashboard') }}" class="">Profils</a>
+                    @if (Session::has('couturiers') && Session::get('couturiers')->email == auth()->user()->email)
+                          <a href="#" style="display: none" class="inscription btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscription">Compte professionnel</a>
+                    @else
+                          <a href="#" class="inscription btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscription">Compte professionnel</a>
+                    @endif
+
                   <h3>{{ $userName = auth()->user()->name}}</h3>
                 @else
                     <a href="{{ route('login') }}" class="">Log in</a>
@@ -71,7 +78,6 @@
             {{-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Seconnecter" data-bs-whatever="@mdo">Se connecté</a> --}}
             {{-- <a href="/profils">Profils</a> --}}
 
-            
         </nav>
       </div>
       @if(isset($request))
@@ -87,7 +93,6 @@
       @endif
 
        
-
     </header>
 
     </div>
@@ -105,18 +110,22 @@
     </div>
     <div class="modal-body">
       <form>
+
         <div class="mb-4">
           <label for="recipient-name" class="col-form-label">Inscrit en tant que Couturier</label>
          <a href="/inscription" class="btn">Compte Couturier</a>
         </div>
+
         <div class="mb-4">
           <label for="recipient-name" class="col-form-label">Inscrit en tant que Client</label>
          <a href="/client" class="btn">Compte Client</a>
         </div>
-        <div class="mb-4">
+
+        {{-- <div class="mb-4">
           <label for="recipient-name" class="col-form-label">Inscrit en tant que Livreur</label>
          <a href="/livreur-compte" class="btn">Compte Livreur</a>
-        </div>
+        </div> --}}
+
       </form>
     </div>
     {{-- <div class="modal-footer">

@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/index', [FashionHouseController::class, 'Main_page']);
+Route::get('/',[HomeController::class,'walcome_f_h'])->name('welcome');
 Route::get('/couture', [FashionHouseController::class, 'Couturier_page']);
 Route::get('/livreur', [FashionHouseController::class,'Service_livreur']);
 Route::get('/inscription', [FashionHouseController::class, 'Inscription_user']);
@@ -54,10 +53,18 @@ Route::get('/dashboard', function () {
      //affichage des éléments
      $data_produit = produits::all();
     return view('dashboard',['produits' => $data_produit]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard'); // je dois ajouter ça après 'is.fashion'
+
+Route::get('/index', function(){
+    return view('index');
+})->middleware(['auth','is.fashion']);
+
+Route::middleware(['is.fashion'])->group(function(){
+    Route::get('/index', [FashionHouseController::class, 'Main_page'])->name('index_page');
+});
 
 Route::middleware('auth')->group(function () {
-    Route::get('/',[HomeController::class,'walcome_f_h'])->name('welcome');
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -65,6 +72,9 @@ Route::middleware('auth')->group(function () {
     // se connecté si il a déja un compte professionnel 
     Route::get('userCompte', [FashionHouseController::class,'Se_conneter_compte_exist'])->name('user.exist');
     Route::post('/connect-user', [FashionHouseController::class,'conncter_utilisateur'])->name('user.connect');
+
+    // redirection vers la page du couturier 
+    //Route::get('/index', [FashionHouseController::class, 'Main_page'])->name('index_page');
         
 });
 
