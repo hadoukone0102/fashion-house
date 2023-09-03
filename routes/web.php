@@ -51,7 +51,7 @@ Route::get('/test',[ProoduitController::class,'getProduct'] );
 
 Route::get('/dashboard', function () {
      //affichage des éléments
-     $data_produit = produits::all();
+     $data_produit = produits::paginate(3);
     return view('dashboard',['produits' => $data_produit]);
 })->middleware(['auth', 'verified'])->name('dashboard'); // je dois ajouter ça après 'is.fashion'
 

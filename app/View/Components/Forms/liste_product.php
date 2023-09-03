@@ -12,11 +12,14 @@ class liste_product extends Component
     /**
      * Create a new component instance.
      */
-    public $products;
-    public function __construct()
+    public $type;
+    public $prod;
+
+    public function __construct($type)
     {
         //
-        $this->products = produits::all();
+        $this->type = $type;
+        $this->prod = produits::all();
     }
 
     /**
@@ -24,6 +27,15 @@ class liste_product extends Component
      */
     public function render(): View|Closure|string
     {  
-        return view('components.forms.liste_product');
+
+        return view('components.forms.liste_product')->with('cle','message');
+        
+    }
+
+    public function getProduct() 
+    {
+        return [
+            'message' => 'je fais un test',
+        ];
     }
 }

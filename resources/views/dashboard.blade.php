@@ -22,7 +22,7 @@
         {{-- la première partie --}}
             <div class=" block m-2 py-2 w-[30%] min-h-[45rem] h-auto bg-white rounded-[2rem] border border-zinc-300 block items-center">
                 <div class=" py-2 text-black text-center font-medium">Taches quotidiennes</div>
-                <div class="w-[100%] h-[12px] bg-green-700"></div>
+                <div class="w-[100%] h-[12px] bg-green-500"></div>
                 <div class="block second">
                     <nav class="navBar" id="none">
                         <a href="#" id="liste_product_view">Listes des produits</a>
@@ -37,7 +37,7 @@
 
         {{-- la deuxième partie --}}
         <div class="w-[70%] min-h-[45rem] h-auto bg-white rounded-[2rem] border border-zinc-300 block items-center">
-            <div class="w-[100%] h-[103px] bg-green-500 rounded-tl-[2rem] rounded-tr-[2rem]">
+            <div class="w-[100%] h-[80px] bg-green-500 rounded-tl-[2rem] rounded-tr-[2rem]">
                 <h2 class="text-center py-4 font-bold text-white text-2xl">Espace de Travaile</h2>
             </div>
 
@@ -55,7 +55,10 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900 dark:text-gray-100">
-                            <x-Forms.liste_product/>
+                            @php
+                            // $recups = ;
+                            @endphp
+                            <x-Forms.liste_product :type="$produits" />
                         </div>
                     </div>
                 </div>
