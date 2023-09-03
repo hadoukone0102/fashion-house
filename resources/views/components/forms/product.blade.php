@@ -53,7 +53,7 @@
             @enderror
           </div>
           <div class="mb-5">
-            <button  type="submit" class="btn btn-primary">Enregistrer</button>
+            <button  type="submit" class="btn" style="padding: 1.5rem; text-align;center; border:.1rem solid #2ecc71;font-size:1.5rem;background-color:#2ecc71;color:white;">Enregistrer</button>
           </div>
     </form>
 </div>

@@ -1,13 +1,75 @@
-#link_action{
+#link_action_add_prod{
     cursor: pointer;
-    color: #2c2c54;
 }
-#link_action:hover{
-    border-bottom: .5rem solid #2ecc71;
+#link_action_add_prod.active{
+    background-color: #2ecc71;
+    transition: background-color 1s ease-in-out;
+    border-radius: .5rem;
+    color: white;
 }
+#voir_produit_recent.active{
+    background-color: #2ecc71;
+    transition: background-color 1s ease-in-out;
+    border-radius: .5rem;
+    color: white;
+}
+
+#produit_recent{
+    display: none;
+}
+
+#produit_recent.active{
+    display: block;
+}
+
+
 #formulaire_produits{
     display: none;
 }
 #formulaire_produits.active{
     display: block;
+}
+
+#liste_product_view{
+    background-color: #2ecc71;
+    transition: background-color 1s ease-in-out;
+    border-radius: .5rem;
+    color: white;
+}
+#liste_product_view.active{
+    background-color: white;
+    color: #2c2c54;
+}
+
+#liste_produit.active{
+    display: none;
+}
+/* les liens à gauche */
+.second{
+    display: block;
+}
+.second .navBar{
+    display: block;
+    margin: 1.5rem;
+}
+.second .navBar a{
+    display: block;
+    padding: 1.2rem;
+    margin-bottom: .5rem;
+    border: .1rem solid #2ecc71;
+}
+.second .navBar a:hover{
+    background-color: #2ecc71;
+    transition: background-color 1s ease-in-out;
+    border-radius: .5rem;
+    color: white;
+}
+
+
+/* mon bouton */
+.btn{
+    padding: 2rem 9%;
+    text-align: center;
+    border: .1rem solid #2ecc71;
+    color: #2c2c54;
 }

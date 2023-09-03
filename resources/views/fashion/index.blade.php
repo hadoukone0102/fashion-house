@@ -19,114 +19,84 @@
     <div class="header">
 
         <header>
-      <div class="first">
-        <a href="#" class="logo"><span>F</span>ashion<span>_</span><span>H</span>ouse</a>
-        {{-- <div class="alert alert-success">{{ session('message') }}</div> --}}
-        <form action="#">
-            <label for="Search" class="fa-solid fa-magnifying-glass"></label>
-            <input type="text" autocomplete="on" id="search">
-        </form>
-      </div>
-      <div class="second">
-        <nav class="navBar" id="none">
-            <a href="/">Acceuil</a>
-            <a href="#" id="services">Service</a>
-            <a href="#" id="produits">Produit</a>
-            <a href="#" id="blogs">Blog</a>
-        </nav>
-        <div id="menubar" class="fa fa-bars"></div>
-            {{-- <div class="icons">
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-shopping-cart"></i></a>
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
-                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
-            </div> --}}
+            <div class="first">
+                <a href="#" class="logo"><span>F</span>ashion<span>_</span><span>H</span>ouse</a>
+                {{-- <div class="alert alert-success">{{ session('message') }}</div> --}}
+                <form action="#">
+                    <label for="Search" class="fa-solid fa-magnifying-glass"></label>
+                    <input type="text" autocomplete="on" id="search">
+                </form>
+            </div>
+            <div class="second">
+                <nav class="navBar" id="none">
+                    <a href="/">Acceuil</a>
+                    {{-- <a href="#" id="services">Service</a>
+                    <a href="#" id="produits">Produit</a> --}}
+                    <a href="#" id="blogs">Blog</a>
+                </nav>
+                <div id="menubar" class="fa fa-bars"></div>
+                            {{-- <div class="icons">
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-shopping-cart"></i></a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
+                            </div> --}}
 
-            {{-- <div class="">
-                @if (Route::has('login'))
-                    <div class="">
-                        @auth
-                        <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="">Log in</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div> --}}
+                            {{-- <div class="">
+                                @if (Route::has('login'))
+                                    <div class="">
+                                        @auth
+                                        <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                                    @else
+                                        <a href="{{ route('login') }}" class="">Log in</a>
+                                        @if (Route::has('register'))
+                                            <a href="{{ route('register') }}" class="">Register</a>
+                                        @endif
+                                    @endauth
+                                </div>
+                            @endif
+                        </div> --}}
 
-        <nav class="navBar_link">
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="">Profils</a>
-                    <a href="#" class="btn btn-primary"><i class="fa fa-bell" aria-hidden="true"></i></a>
-                    <a href="#" style="display: none" class="inscription btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscription">Compte professionnel</a>
-                @else
-                    <a href="{{ route('login') }}" class="">Log in</a>
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="">Register</a>
-                    @endif
-                @endauth
-            @endif
-            {{-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Seconnecter" data-bs-whatever="@mdo">Se connecté</a> --}}
-            {{-- <a href="/profils">Profils</a> --}}
+                        <nav class="navBar_link">
+                            @if (Route::has('login'))
+                                @auth
+                                    <a href="{{ url('/dashboard') }}" class="">Profils</a>
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                                    <a href="#" style="display: none" class="inscription btn btn-primary" data-bs-toggle="modal" data-bs-target="#inscription">Compte professionnel</a>
+                                @else
+                                    <a href="{{ route('login') }}" class="">Log in</a>
+                                    @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="">Register</a>
+                                    @endif
+                                @endauth
+                            @endif
+                            {{-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Seconnecter" data-bs-whatever="@mdo">Se connecté</a> --}}
+                            {{-- <a href="/profils">Profils</a> --}}
 
-        </nav>
-      </div>
-      @if(isset($request))
-            @if($request == 'couture' || $request == 'profils' || $request == 'myfashion')
-                <div class="back" style="display: none;">
-                    <a href="/couture" class="btn_first">Commencer Ma Session</a>
-                </div>
-            @else
-                <div class="back">
-                    <a href="/couture" class="btn_first">Commencer Ma Session</a>
-                </div>
-            @endif 
-      @endif
-
-       
-
-    </header>
+                        </nav>
+            </div>
+            <div class="back">
+                {{-- <a href="/couture" class="btn_first">Commencer Ma Session</a> --}}
+            </div>
+                {{-- @if(isset($request))
+                        @if($request == 'couture' || $request == 'profils' || $request == 'myfashion')
+                            <div class="back" style="display: none;">
+                                <a href="/couture" class="btn_first">Commencer Ma Session</a>
+                            </div>
+                        @else
+                            <div class="back">
+                                <a href="/couture" class="btn_first">Commencer Ma Session</a>
+                            </div>
+                        @endif 
+                @endif --}}
+        </header>
 
     </div>
 
 
 
 
-
-
-
-
-
-
-<section class="Service" id="Service">
-   
-    <div class="content_service">
-        <div class="grild_service">
-            <div class="img">
-                <img src="img/sevice1.png" alt="">  
-            </div>
-            <div class="details">
-                <p>Fashion House le meilleur</p>
-            </div>
-            <a href="/couture" class="btn">Débuter une Session</a>
-        </div>
-        <div class="grild_service">
-            <div class="img">
-            <img src="img/service2.png" alt="">
-            </div>
-            <div class="details">
-                <p>Fashion House le meilleur</p>
-            </div>
-            <a href="/livreur" class="btn">Les services de Livreur</a>
-        </div>
-    </div>
-
-</section>
-<h1 class="titre">Les Plus Utilisés chez <span>Fashion House</span></h1>
+{{-- <h1 class="titre">Les Plus Utilisés chez <span>Fashion House</span></h1>
 <section class="produit" id="produit">
     <!-- <div class="produits_ctn"> -->
         <div class="grilds_main">
@@ -217,7 +187,7 @@
             </div>
         <!-- </div> -->
     </div>
-</section>
+</section> --}}
 
 
 <section class="blog" id="blog">

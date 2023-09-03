@@ -215,29 +215,50 @@
         <!-- <div class="produits_ctn"> -->
             <div class="grilds_main">
                 @if ($produits)
-                {{-- {{ $userName = auth()->user()->email}} --}}
-                    @foreach ($produits as $prod)
-                    <div class="grilds_produits">
-                        <div class="img_prod">
-                        @php
-                            $trimmedUserName = trim($userName, '/');
-                            $imagePath = $trimmedUserName . '/' . $prod->prod;
-                        @endphp
-                        <img src="{{ asset($imagePath) }}" alt="logo produit">
-                        {{-- <img src="images/{{$prod->prod}}" alt="logo produit"> --}}
-                        </div>
-                        <div class="decoration">
-                            <div class="decora">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa fa-shopping-cart"></i>
-                                <i class="fa regular fa-eye"></i>
-                                <i class="fa-solid fa-shirt"></i>
+                   @if(auth()->check())
+                        @foreach ($produits as $prod)
+                            <div class="grilds_produits">
+                                <div class="img_prod">
+                                @php
+                                    $userName = auth()->user()->email;
+                                    $trimmedUserName = trim($userName, '/');
+                                    $imagePath = $trimmedUserName . '/' . $prod->prod;
+                                @endphp
+                                {{-- <img src="{{$imagePath}}" alt="logo produit"> --}}
+                                <img src="kone@gmail.com/{{$prod->prod}}" alt="">
+                                {{-- <img src="images/{{$prod->prod}}" alt="logo produit"> --}}
+                                </div>
+                                <div class="decoration">
+                                    <div class="decora">
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <i class="fa regular fa-eye"></i>
+                                        <i class="fa-solid fa-shirt"></i>
+                                    </div>
+                                </div>
+                                <a href="{{ route('myfashion.fave', ['id' => $prod->id])}}" class="btn">joindre le Couturier</a>
                             </div>
-                        </div>
-                        <a href="{{ route('myfashion.fave', ['id' => $prod->id])}}" class="btn">joindre le Couturier</a>
-                    </div>
-                    @endforeach
-                        
+                        @endforeach
+                    @else
+                            @foreach ($produits as $prod)
+                                <div class="grilds_produits">
+                                    <div class="img_prod">
+                                    {{-- <img src="{{$imagePath}}" alt="logo produit"> --}}
+                                    <img src="kone@gmail.com/{{$prod->prod}}" alt="produit image">
+                                    {{-- <img src="images/{{$prod->prod}}" alt="logo produit"> --}}
+                                    </div>
+                                    <div class="decoration">
+                                        <div class="decora">
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <i class="fa regular fa-eye"></i>
+                                            <i class="fa-solid fa-shirt"></i>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('myfashion.fave', ['id' => $prod->id])}}" class="btn">joindre le Couturier</a>
+                                </div>
+                            @endforeach 
+                    @endif  
                 @else
                         
                     <div class="grilds_produits">

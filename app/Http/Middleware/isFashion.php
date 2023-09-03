@@ -17,13 +17,19 @@ class isFashion
     public function handle(Request $request, Closure $next): Response
     {   
 
-        $user_conn = auth()->user()->email;
-        $select_user_conn = Fashion::where('email',$user_conn)->first();
-        if($select_user_conn){
-            return $next($request);
+        if(auth()->check()){
+            $user_conn = auth()->user()->email;
+            $select_user_conn = Fashion::where('email',$user_conn)->first();
+            if($select_user_conn){
+                return $next($request);
+            }else{
+                return redirect('/');
+            }
         }else{
-            return redirect('/');
+            $user_conn= null;
+            return redirect('/login');
         }
+       
         // $user_conn = auth()->user()->email;
         
         // if($select_user_conn){
