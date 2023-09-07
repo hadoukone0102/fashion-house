@@ -28,7 +28,9 @@ class liste_product extends Component
     public function render(): View|Closure|string
     {  
 
-        return view('components.forms.liste_product')->with('cle','message');
+        return view('components.forms.liste_product',[
+            
+        ]);
         
     }
 

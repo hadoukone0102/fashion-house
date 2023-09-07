@@ -13,6 +13,7 @@
     <title>Fashion House</title>
     <script src="JS/script.js" defer></script>
     <script src="JS/couture.js" defer></script>
+    <script src="JS/welcom.js" defer></script>
   </head>
   <body>
     
@@ -194,7 +195,7 @@
                     <img src="img/sevice1.png" alt="">  
                 </div>
                 <div class="details">
-                    <p>Fashion House le meilleur</p>
+                    {{-- <p>Fashion House le meilleur</p> --}}
                 </div>
                 <a href="/couture" class="btn">Débuter une Session</a>
             </div>
@@ -203,7 +204,7 @@
                 <img src="img/service2.png" alt="">
                 </div>
                 <div class="details">
-                    <p>Fashion House le meilleur</p>
+                    {{-- <p>Fashion House le meilleur</p> --}}
                 </div>
                 <a href="/livreur" class="btn">Les services de Livreur</a>
             </div>
@@ -236,10 +237,10 @@
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('myfashion.fave', ['id' => $prod->id])}}" class="btn">joindre le Couturier</a>
+                                <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
                             </div>
                         @endforeach
-                    @else
+                        @else
                             @foreach ($produits as $prod)
                                 <div class="grilds_produits">
                                     <div class="img_prod">
@@ -255,7 +256,9 @@
                                             <i class="fa-solid fa-shirt"></i>
                                         </div>
                                     </div>
-                                    <a href="{{ route('myfashion.fave', ['id' => $prod->id])}}" class="btn">joindre le Couturier</a>
+                                    {{-- <a href="{{ route('/tests', ['iduser' => $this_fashion->id , 'idprod' => $prod->id]) }}" class="btn">joindre le Couturier</a> --}}
+
+                                    <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
                                 </div>
                             @endforeach 
                     @endif  
@@ -488,22 +491,12 @@
 
 </div>
 
-    @if($request == 'profils' || $request == 'myfashion')
-    <footer class="footer" style="display: none;">
-    <div class="content_ftr">
-    <h3> Fashion House votre service toujour disponible</h3>
-    <p>&copy; tous drois reserver | kone hadou</p>
-    </div>
-    </footer>
-    @else
     <footer class="footer">
     <div class="content_ftr">
     <h3> Fashion House votre service toujour disponible </h3>
     <p>&copy; tous drois reserver | kone hadou</p>
     </div>
     </footer>
-
-    @endif
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

@@ -7,6 +7,7 @@
             secondElement.classList.toggle('active');
         })
     }
+
     ActiveDesactive('#menubar','.navBar');
     
     function SmoothFunction(link, section){
@@ -19,10 +20,8 @@
             })
         })
     }
-    SmoothFunction('#services','.Service');
-    SmoothFunction('#produits','.produit');
-    SmoothFunction('#blogs','.blog');
-    
+
+    SmoothFunction('#blogs','#blog');
     
     function AnimeFunction(grild){
         let grilds = document.querySelectorAll(grild);
@@ -64,13 +63,6 @@
     // });
     
     // JS de Bootstrap
-    
-    var myModal = document.getElementById('myModal')
-    var myInput = document.getElementById('myInput')
-    
-    myModal.addEventListener('shown.bs.modal', function () {
-      myInput.focus()
-    })
     
     
     

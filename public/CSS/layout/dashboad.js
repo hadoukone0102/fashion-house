@@ -49,4 +49,17 @@
             Element4.classList.toggle('active');
         });
 
+        document.addEventListener('DOMContentLoaded', function () {
+            const modifyButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+            const productIdParagraph = document.getElementById('productId');
+        
+            modifyButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const productId = button.getAttribute('data-id');
+                    productIdParagraph.textContent = `ID du produit : ${productId}`;
+                });
+            });
+        });
+        
+
 })();

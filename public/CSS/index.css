@@ -297,6 +297,7 @@ section{
     transition: background-color 1s ease-in-out;
 }
 .titre{
+    padding: 2rem;
     text-align: center;
     font-size: 2rem;
     font-weight: bolder;

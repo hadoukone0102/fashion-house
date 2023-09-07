@@ -75,9 +75,9 @@
 
                         </nav>
             </div>
-            <div class="back">
+            {{-- <div class="back"> --}}
                 {{-- <a href="/couture" class="btn_first">Commencer Ma Session</a> --}}
-            </div>
+            {{-- </div>  --}}
                 {{-- @if(isset($request))
                         @if($request == 'couture' || $request == 'profils' || $request == 'myfashion')
                             <div class="back" style="display: none;">
@@ -93,101 +93,30 @@
 
     </div>
 
-
-
-
-{{-- <h1 class="titre">Les Plus Utilisés chez <span>Fashion House</span></h1>
+<h1 class="titre">Mes Publications chez <span>Fashion House</span></h1>
 <section class="produit" id="produit">
     <!-- <div class="produits_ctn"> -->
         <div class="grilds_main">
-            <div class="grilds_produits">
-                <div class="img_prod">
-                    <img src="img/prod/01.png" alt="logo produit">
-                </div>
-                <div class="decoration">
-                    <div class="decora">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa fa-shopping-cart"></i>
-                        <i class="fa regular fa-eye"></i>
-                        <i class="fa-solid fa-shirt"></i>
+           @if ($my_prod)
+               @foreach ($my_prod as $my_prod)
+                    <div class="grilds_produits">
+                        <div class="img_prod">
+                            <img src="{{auth()->user()->email}}/{{$my_prod->prod}}" alt="logo produit">
+                        </div>
+                        <div class="decoration">
+                            <div class="decora">
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa regular fa-eye"></i>
+                            </div>
+                        </div>
                     </div>
-                    
-                </div>
-                <a href="#" class="btn">joindre le Couturier</a>
-            </div>
-            <div class="grilds_produits">
-                <div class="img_prod">
-                    <img src="img/prod/02.png" alt="logo produit">
-                </div>
-                <div class="decoration">
-                    <div class="decora">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa fa-shopping-cart"></i>
-                        <i class="fa regular fa-eye"></i>
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">joindre le Couturier</a>
-            </div>
-            <div class="grilds_produits">
-                <div class="img_prod">
-                    <img src="img/prod/03.png" alt="logo produit">
-                </div>
-                <div class="decoration">
-                    <div class="decora">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa fa-shopping-cart"></i>
-                        <i class="fa regular fa-eye"></i>
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">joindre le Couturier</a>
-            </div>
-            <div class="grilds_produits">
-                <div class="img_prod">
-                    <img src="img/prod/04.png" alt="logo produit">
-                </div>
-                <div class="decoration">
-                    <div class="decora">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa fa-shopping-cart"></i>
-                        <i class="fa regular fa-eye"></i>
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">joindre le Couturier</a>
-            </div>
-            <div class="grilds_produits">
-                <div class="img_prod">
-                    <img src="img/prod/05.png" alt="logo produit">
-                </div>
-                <div class="decoration">
-                    <div class="decora">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa fa-shopping-cart"></i>
-                        <i class="fa regular fa-eye"></i>
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">joindre le Couturier</a>
-            </div>
-            <div class="grilds_produits">
-                <div class="img_prod">
-                    <img src="img/prod/06.png" alt="logo produit">
-                </div>
-                <div class="decoration">
-                    <div class="decora">
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa fa-shopping-cart"></i>
-                        <i class="fa regular fa-eye"></i>
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">joindre le Couturier</a>
-            </div>
+               @endforeach
+           @endif
+            
+
         <!-- </div> -->
     </div>
-</section> --}}
+</section>
 
 
 <section class="blog" id="blog">

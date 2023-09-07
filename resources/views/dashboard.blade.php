@@ -91,22 +91,65 @@
                                     </thead>
                                     <tbody>
                                      
-                                      @foreach ($produits as $product)
-                                                <tr>
-                                                    <th scope="row">{{ $product->nom_produit}}</th>
-                                                    <td>{{$product->prix}}</td>
-                                                    <td>{{$product->description}}</td>
-                                                    <td>nean</td>
-                                                    <td>{{$product->timestamps}}</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info">Modifier</a>
-                                                        <a href="{{ route('produit.delete', ['id' => $product->id]) }}" class="btn btn-danger">Supprimer</a>
-                                                    </td>
-                                                </tr>
-                                      @endforeach
+                                        @foreach ($connecter as $product)
+                                        <tr>
+                                            <th scope="row">{{ $product->nom_produit}}</th>
+                                            <td>{{$product->prix}}</td>
+                                            <td>{{$product->description}}</td>
+                                            <td>nean</td>
+                                            <td>{{$product->created_at}}</td>
+                                            <td>
+                                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modi" data-id="{{ $product->id }}">Modifier</button>
+                                                <a href="{{ route('produit.delete', ['id' => $product->id]) }}" class="btn btn-danger">Supprimer</a>
+                                            </td>
+                                        </tr>
+                                        
+                                        <!-- mon panier -->
+                                        <div class="modal fade" id="modi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Je Souhaite Modifier</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <form action="{{ route('products.update', ['id' => $product->id]) }}" method="POST">
+                                                            @csrf
+                                        
+                                                            <div class="mb-3">
+                                                                <label for="exampleFormControlInput1" class="form-label">Le Prix du produit</label>
+                                                                <input type="number" name="prix" class="form-control" id="exampleFormControlInput1" placeholder="example:20.000">
+                                                                @error('prix')
+                                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                                @enderror
+                                                            </div>
+                                        
+                                                            <div class="mb-3">
+                                                                <label for="exampleFormControlInput1" class="form-label">Charger le produit</label>
+                                                                <input type="file" name="produit" class="form-control" id="exampleFormControlInput1" placeholder="example:20.000">
+                                                                @error('prod')
+                                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                                @enderror
+                                                            </div>
+                                        
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                                            </div>
+                                                        </form>
+
+                                                        <p id="productId"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        
                                     </tbody>
                                   </table>
                                 @endif
+                                   
                             </div>
                         </div>
                         
@@ -119,6 +162,8 @@
 
         </div> 
         {{-- la première partie --}}
+
+        
 
     </div>
     

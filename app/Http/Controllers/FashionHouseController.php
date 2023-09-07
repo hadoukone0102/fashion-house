@@ -6,6 +6,7 @@ use App\Models\Fashion;
 use App\Models\livreurs;
 use App\Models\Posts;
 // use Illuminate\Contracts\Session\Session;
+use App\Models\produits;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -285,9 +286,32 @@ class FashionHouseController extends Controller
     }
     
     // methode pour le profils de l'utilisateur 
-    public function showUserProfile($id) {
-        $user = Fashion::findOrFail($id); // Récupère l'utilisateur avec l'ID spécifié
-        return view('welcome', ['userkey' => $user]);
+    public function showUserProfile($iduser,$idprod) {
+        // la liste de mes produits
+        $data_produit = produits::all();
+    /*
+        si l'utilisateur est connecté
+        si le mail qu'il a utiliser pour ce connecter est égale au mail qui existe dans ma bd
+        si non il couturier
+    */
+        if(auth()->check()){
+            $user_connect_email = auth()->user()->email;
+            $user_co = Posts::where('email', $user_connect_email )->exists();
+        }else{
+            $user_co= null;
+        }
+
+        $user = Fashion::where('email', $iduser)->firstOrFail(); // Récupère l'utilisateur avec l'ID spécifié
+        $prods = produits::findOrFail($idprod);
+
+        return view('Details.All',[
+
+            'userkey' => $user ,
+            'product_key' => $prods,
+            'user_co' => $user_co,
+            'produits' => $data_produit,
+        ]);
+
     }
 
 
