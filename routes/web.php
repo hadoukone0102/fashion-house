@@ -48,21 +48,6 @@ Route::post('/products/{id}/update', [ProoduitController::class,'modifier_produi
 Route::get('/test',[ProoduitController::class,'getProduct'] );
 
 
-// Route::get('/tests/{iduser}/{idprod}', function( $iduser, $idprod){
-
-//      // Récupérer l'utilisateur par son ID
-//      $all_of_user = Fashion::findOrFail($iduser);
-
-//      // Récupérer le produit par son ID
-//      $this_prod = produits::findOrFail($idprod);
-
-//     $select_all_form_this = Fashion::where('id',$all_of_user)->get();
-//     return view('welcome',[
-//         'this_fashion' => $all_of_user,
-//         'all_for_me'=> $select_all_form_this,
-//         'produit' => $this_prod,
-//     ]);
-// });
 
 
 

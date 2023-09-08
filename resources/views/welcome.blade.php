@@ -18,7 +18,6 @@
   <body>
     
     <div class="header">
-
         <header>
             <div class="first">
                 <a href="#" class="logo"><span>F</span>ashion<span>_</span><span>H</span>ouse</a>
