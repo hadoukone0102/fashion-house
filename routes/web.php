@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\FashionHouseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -48,6 +49,10 @@ Route::post('/products/{id}/update', [ProoduitController::class,'modifier_produi
 Route::get('/test',[ProoduitController::class,'getProduct'] );
 
 
+// les routes pour mon panier
+// Route::post('/panier/ajouter',[CartController::class,'store'])->name('cart.store');
+Route::get('/ajouter/{id}',[HomeController::class, 'Ajouter_panier'])->name('ajouter.panier');
+// les routes pour mon panier
 
 
 
@@ -83,9 +88,8 @@ Route::middleware('auth')->group(function () {
     Route::get('userCompte', [FashionHouseController::class,'Se_conneter_compte_exist'])->name('user.exist');
     Route::post('/connect-user', [FashionHouseController::class,'conncter_utilisateur'])->name('user.connect');
 
-    // redirection vers la page du couturier 
-    //Route::get('/index', [FashionHouseController::class, 'Main_page'])->name('index_page');
-        
+   // protection de la route du panier
+   Route::post('/panier/ajouter',[CartController::class,'store'])->name('cart.store');
 });
 
 require __DIR__.'/auth.php';

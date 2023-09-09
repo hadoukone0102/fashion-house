@@ -37,7 +37,7 @@
                 <div id="menubar" class="fa fa-bars"></div>
                 <div class="icons">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
-                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-shopping-cart"><span class="badge bg-info">{{$counts}}</span></i></a>
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
                 </div>
@@ -108,6 +108,16 @@
   
   
     <!-- mon panier -->
+    <style>
+        /* Styles pour le contenu scrollable */
+.scrollable-content {
+    max-height: 400px; 
+    overflow-y: auto; 
+    width: auto;
+    padding: 15px;
+}
+
+    </style>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -116,7 +126,52 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <p>Auccun produit..</p>
+                <div class="modal-body scrollable-content">
+                    <!-- Votre contenu ici -->
+                
+                
+                    <table id="cart" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Article</th>
+                                <th>Nom article</th>
+                                <th>Qantités</th>
+                                <th>prix</th>
+                                <th>total</th>
+                                <th>Actions</th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody>
+                            @if ($data_panier)
+                                @foreach ($data_panier as $details)
+                                    <tr >
+                                        <td data-th="imgarticle">
+                                                <div class="col-sm-3 hidden-xs">
+                                                    <img src="{{$details->image_article}}" class="card-img-top" alt="">
+                                                </div>
+                                        </td>
+                                        <td data-th="product">
+                                            {{-- <div class="row"> --}}
+                                                <div class="col-sm-9">
+                                                    <h4 class="normargin">{{$details->nom_article}}</h4>
+                                                </div>
+                                            {{-- </div> --}}
+                                        </td>
+                                        <td data-th="qantity">{{$details->quantiter}}</td>
+                                        <td data-th="prix">{{$details->prix_article}}F cfa</td>
+                                        <td data-th="Subtotal" class="text-center">{{ $details->prix_article * $details->quantiter}}F cfa</td> 
+                                        <td class="actions">
+                                            <a href="#" class="text-center"><i class="fa fa-trash text-center" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                
+                            @endif
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermé</button>
@@ -211,190 +266,69 @@
 
     </section>
     <h1 class="titre">Les Plus Utilisés chez <span>Fashion House</span></h1>
+    @if (session('sucess'))
+        <div class="alert alert-success">
+            {{session('sucess')}}
+        </div>
+    @endif
     <section class="produit" id="produit">
         <!-- <div class="produits_ctn"> -->
             <div class="grilds_main">
-                @if ($produits)
-                   @if(auth()->check())
-                        @foreach ($produits as $prod)
+
+                        @foreach ($produit_of_couturierA as $prod)
                             <div class="grilds_produits">
                                 <div class="img_prod">
-                                @php
-                                    $userName = auth()->user()->email;
-                                    $trimmedUserName = trim($userName, '/');
-                                    $imagePath = $trimmedUserName . '/' . $prod->prod;
-                                @endphp
-                                {{-- <img src="{{$imagePath}}" alt="logo produit"> --}}
-                                <img src="kone@gmail.com/{{$prod->prod}}" alt="">
-                                {{-- <img src="images/{{$prod->prod}}" alt="logo produit"> --}}
+                                    <img src="kone@gmail.com/{{$prod->prod}}" alt="">
                                 </div>
                                 <div class="decoration">
                                     <div class="decora">
                                         <i class="fa-regular fa-star"></i>
-                                        <i class="fa fa-shopping-cart"></i>
+
+                                        <form action="{{route('cart.store')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id_prod" value="{{$prod->id}}">
+                                            <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
+                                            <input type="hidden" name="prod_name" value="{{$prod->nom_produit}}">
+                                            <input type="hidden" name="prod_price" value="{{$prod->prix}}">
+                                            <input type="hidden" name="img_prod" value="{{$prod->prod}}">
+                                            <button type="submit"><i class="fa fa-shopping-cart"></i></button>
+                                        </form>
+
+                                        {{-- <a href="{{route('ajouter.panier',$prod->id) }}"><i class="fa fa-shopping-cart"></i></a> --}}
                                         <i class="fa regular fa-eye"></i>
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                 </div>
                                 <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
                             </div>
-                        @endforeach
-                        @else
-                            @foreach ($produits as $prod)
-                                <div class="grilds_produits">
-                                    <div class="img_prod">
-                                    {{-- <img src="{{$imagePath}}" alt="logo produit"> --}}
-                                    <img src="kone@gmail.com/{{$prod->prod}}" alt="produit image">
-                                    {{-- <img src="images/{{$prod->prod}}" alt="logo produit"> --}}
-                                    </div>
-                                    <div class="decoration">
-                                        <div class="decora">
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa fa-shopping-cart"></i>
-                                            <i class="fa regular fa-eye"></i>
-                                            <i class="fa-solid fa-shirt"></i>
-                                        </div>
-                                    </div>
-                                    {{-- <a href="{{ route('/tests', ['iduser' => $this_fashion->id , 'idprod' => $prod->id]) }}" class="btn">joindre le Couturier</a> --}}
+                        @endforeach  
 
-                                    <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
+                        @foreach ($produit_of_couturierB as $prod)
+                            <div class="grilds_produits">
+                                <div class="img_prod">
+                                    <img src="hadou@gmail.com/{{$prod->prod}}" alt="">
                                 </div>
-                            @endforeach 
-                    @endif  
-                @else
+                                <div class="decoration">
+                                    <div class="decora">
+                                        <i class="fa-regular fa-star"></i>
+                                        <form action="{{route('cart.store')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id_prod" value="{{$prod->id}}">
+                                            <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
+                                            <input type="hidden" name="prod_name" value="{{$prod->nom_produit}}">
+                                            <input type="hidden" name="prod_price" value="{{$prod->prix}}">
+                                            <input type="hidden" name="img_prod" value="{{$prod->prod}}">
+                                            <button type="submit"><i class="fa fa-shopping-cart"></i></button>
+                                        </form>
+                                        {{-- <a href="{{route('ajouter.panier',$prod->id) }}"><i class="fa fa-shopping-cart"></i></a> --}}
+                                        <i class="fa regular fa-eye"></i>
+                                        <i class="fa-solid fa-shirt"></i>
+                                    </div>
+                                </div>
+                                <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
+                            </div>
+                        @endforeach  
                         
-                    <div class="grilds_produits">
-                        <div class="img_prod">
-                            <img src="img/prod/03.png" alt="logo produit">
-                        </div>
-                        <div class="decoration">
-                            <div class="decora">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa fa-shopping-cart"></i>
-                                <i class="fa regular fa-eye"></i>
-                                <i class="fa-solid fa-shirt"></i>
-                            </div>
-                        </div>
-                        <a href="#" class="btn">joindre le Couturier</a>
-                    </div>
-                    <div class="grilds_produits">
-                        <div class="img_prod">
-                            <img src="img/prod/04.png" alt="logo produit">
-                        </div>
-                        <div class="decoration">
-                            <div class="decora">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa fa-shopping-cart"></i>
-                                <i class="fa regular fa-eye"></i>
-                                <i class="fa-solid fa-shirt"></i>
-                            </div>
-                        </div>
-                        <a href="#" class="btn">joindre le Couturier</a>
-                    </div>
-                    <div class="grilds_produits">
-                        <div class="img_prod">
-                            <img src="img/prod/05.png" alt="logo produit">
-                        </div>
-                        <div class="decoration">
-                            <div class="decora">
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa fa-shopping-cart"></i>
-                                <i class="fa regular fa-eye"></i>
-                                <i class="fa-solid fa-shirt"></i>
-                            </div>
-                        </div>
-                        <a href="#" class="btn">joindre le Couturier</a>
-                    </div>
-                    
-                @endif
-
-                {{-- <div class="grilds_produits">
-                    <div class="img_prod">
-                        <img src="img/prod/01.png" alt="logo produit">
-                    </div>
-                    <div class="decoration">
-                        <div class="decora">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa regular fa-eye"></i>
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                        
-                    </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
-                </div>
-                <div class="grilds_produits">
-                    <div class="img_prod">
-                        <img src="img/prod/02.png" alt="logo produit">
-                    </div>
-                    <div class="decoration">
-                        <div class="decora">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa regular fa-eye"></i>
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
-                </div>
-                <div class="grilds_produits">
-                    <div class="img_prod">
-                        <img src="img/prod/03.png" alt="logo produit">
-                    </div>
-                    <div class="decoration">
-                        <div class="decora">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa regular fa-eye"></i>
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
-                </div>
-                <div class="grilds_produits">
-                    <div class="img_prod">
-                        <img src="img/prod/04.png" alt="logo produit">
-                    </div>
-                    <div class="decoration">
-                        <div class="decora">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa regular fa-eye"></i>
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
-                </div>
-                <div class="grilds_produits">
-                    <div class="img_prod">
-                        <img src="img/prod/05.png" alt="logo produit">
-                    </div>
-                    <div class="decoration">
-                        <div class="decora">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa regular fa-eye"></i>
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
-                </div>
-                <div class="grilds_produits">
-                    <div class="img_prod">
-                        <img src="img/prod/06.png" alt="logo produit">
-                    </div>
-                    <div class="decoration">
-                        <div class="decora">
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa fa-shopping-cart"></i>
-                            <i class="fa regular fa-eye"></i>
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                    </div>
-                    <a href="#" class="btn">joindre le Couturier</a>
-                </div> --}}
-
-            <!-- </div> -->
         </div>
     </section>
 
