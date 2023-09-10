@@ -51,7 +51,7 @@ Route::get('/test',[ProoduitController::class,'getProduct'] );
 
 // les routes pour mon panier
 // Route::post('/panier/ajouter',[CartController::class,'store'])->name('cart.store');
-Route::get('/ajouter/{id}',[HomeController::class, 'Ajouter_panier'])->name('ajouter.panier');
+Route::get('/monpanier',[HomeController::class, 'Afficher_panier'])->name('mon.panier');
 // les routes pour mon panier
 
 

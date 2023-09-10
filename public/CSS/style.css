@@ -35,6 +35,7 @@ body{
 .header{
     display: block;
     height: auto;
+    background-color: var(--body);
 }
 
 .header header{

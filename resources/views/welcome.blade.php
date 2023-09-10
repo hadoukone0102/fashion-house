@@ -37,9 +37,10 @@
                 <div id="menubar" class="fa fa-bars"></div>
                 <div class="icons">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
-                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-shopping-cart"><span class="badge bg-info">{{$counts}}</span></i></a>
+                    <a href="{{route('mon.panier')}}"><i class="fa fa-shopping-cart"><span class="badge bg-info">{{$counts}}</span></i></a>
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
+                <!-- class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" -->
                 </div>
                 <nav class="navBar_link">
                     @if (Route::has('login'))
@@ -116,29 +117,32 @@
     width: auto;
     padding: 15px;
 }
+#my_th{
+    font-size: 2rem;
+    color: #2c2c54;
+}
 
     </style>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-dialog ">
+        <div class="modal-content ">
             <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Mon Panier Shopping</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="modal-body scrollable-content">
+            <div class="modal-body scrollable-content">
+                {{-- <div class="modal-body "> --}}
                     <!-- Votre contenu ici -->
                 
-                
-                    <table id="cart" class="table table-bordered">
+                    <table id="cart" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Article</th>
-                                <th>Nom article</th>
-                                <th>Qantités</th>
-                                <th>prix</th>
-                                <th>total</th>
-                                <th>Actions</th>
+                                <th id="my_th">Article</th>
+                                <th id="my_th">Nom article</th>
+                                <th id="my_th">Qantités</th>
+                                <th id="my_th">prix</th>
+                                <th id="my_th">total</th>
+                                <th id="my_th">Actions</th>
                             </tr>
                             
                         </thead>
@@ -171,7 +175,7 @@
                         </tbody>
                     </table>
 
-                </div>
+                {{-- </div> --}}
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermé</button>

@@ -88,4 +88,21 @@ class HomeController extends Controller
         return redirect()->back()->with('sucess','article ajouter au panier');
     }
 
+    public function Afficher_panier(){
+
+        // selectionnons tous les élément dans la base de donnée ou le mail correspond à celui de l'utilisateur,
+        if(auth()->check()){
+            $email_user_connecter = auth()->user()->email;
+        }else{
+            $email_user_connecter = null;
+        }
+        $select_all_email = Panier::where('id_client',$email_user_connecter)->paginate(25);
+        $counts =$select_all_email->total();
+        // dd($select_all_email);
+        return view('Details.panier',[
+            'data_panier' => $select_all_email,
+            'counts' => $counts,
+        ]);
+    }
+
 }

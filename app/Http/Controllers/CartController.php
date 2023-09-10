@@ -66,7 +66,7 @@ class CartController extends Controller
         $newCartItem->image_article = $request->img_prod;
         $newCartItem->save();
     }
-
+    
     // Vous pouvez maintenant rediriger ou faire d'autres opérations ici
     return redirect()->back()->with('sucess','article ajouter au panier');
     
