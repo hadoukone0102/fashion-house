@@ -40,33 +40,79 @@
     <section class="py-10">
        <div class=" flex items-center py-1">
                 {{-- première partie du tableau --}}
-            <div class="w-[35%] m-2 min-h-[45rem] h-auto bg-white rounded-[1rem] border border-zinc-300 block items-center">
+            <div class="w-[34%] m-2 min-h-[55rem] h-auto bg-white rounded-[1rem] border border-zinc-300 block items-center">
                 @php
                     $email_fashion = $userkey->email;
                 @endphp
                 <div class="boite_img">
                     <img id="img_article" src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article">
                 </div>
-                <style>
-                    .boite_img{
-                        min-width: 40rem;
-                        min-height:45rem;
-                    }
-                    #img_article{
-                        width: 100%;
-                        height:100%;
-                    }
-                </style>
+                <div class="presentation_art">
+                    <div class="box_pre">
+                        <div class="img_pre">
+                            <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                        </div>
+                    </div>
+                    <div class="box_pre">
+                        <div class="img_pre">
+                            <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                        </div>
+                    </div>
+                    <div class="box_pre">
+                        <div class="img_pre">
+                            <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
             {{-- première partie du tableau --}}
             {{-- ####################################################################################### --}}
             {{-- deuxieme partie du tableau --}}
-            <div class="w-[65%] min-h-[45rem] h-auto bg-white rounded-[1rem] border border-zinc-300 block items-center">
-                <div class="w-[100%] h-[45px] bg-green-500 rounded-tl-[1rem] rounded-tr-[1rem]">
-                    <h2 class="text-center py-4 font-bold text-white text-2xl">Les Datails du Couturier</h2>
+            <div class="w-[64%] min-h-[55rem] h-auto bg-white rounded-[1rem] border border-zinc-300 block items-center">
+                <div class="w-[100%] h-[49px] bg-green-500 rounded-tl-[1rem] rounded-tr-[1rem]">
+                    <h2 class="text-center py-4 font-bold text-white text-2xl">Couturier</h2>
                 </div>
                 <div class="w-[100%] h-[0px] border-4 border-stone-300"></div>
 
+                <div class="detas_fashion">
+                    <div class="name_fashion">
+                        <span>Nom & Prenom :</span>
+                        <h3>{{$userkey->nom}} {{$userkey->prenom}}</h3>
+                    </div>
+                    <div class="detas_home_fashion">
+                        <span>Localisation :</span>
+                        <h3>{{$userkey->ville}}, {{$userkey->quartier}}</h3>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </div>
+                    <div class="w-[100%] h-[0px] border border-stone-300"></div>
+                    <h2 class="text-center py-4 font-bold text-black text-3xl">Details Personnels</h2>
+                
+                    <div class="name_fashion">
+                        <span>Prix de l'article:</span>
+                        <h3 id="perso">{{$product_key->prix}}F cfa</h3>
+                    </div>
+
+                    <div class="Descr">
+                        <span>Description de l'article :</span>
+                        <h3 id="perso-2">{{$product_key->prix}}F cfa</h3>
+                    </div>
+
+                    <div class="present_fashion">
+                        <div class="fashion_contact">
+                            <div class="number_fah">
+                                <span>Contact : <i class="fa fa-phone" aria-hidden="true"></i></span>
+                            </div>
+                            <h3>{{$userkey->contact}}</h3>
+                        </div>
+                        <div class="fashion_contact">
+                            <div class="number_fah">
+                                <span>Contact :<i class="fa fa-phone" aria-hidden="true"></i></span>
+                            </div>
+                            <h3>{{$userkey->email}}</h3>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
             {{-- première partie du tableau --}}

@@ -287,11 +287,16 @@
                                 <div class="decoration">
                                     <div class="decora">
                                         <i class="fa-regular fa-star"></i>
-
+                                        
                                         <form action="{{route('cart.store')}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id_prod" value="{{$prod->id}}">
+                                            
+                                            @if (auth()->check())
                                             <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
+                                            @else
+                                            <input type="hidden" name="id_client" value="">
+                                            @endif
                                             <input type="hidden" name="prod_name" value="{{$prod->nom_produit}}">
                                             <input type="hidden" name="prod_price" value="{{$prod->prix}}">
                                             <input type="hidden" name="img_prod" value="{{$prod->prod}}">
@@ -318,7 +323,11 @@
                                         <form action="{{route('cart.store')}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id_prod" value="{{$prod->id}}">
+                                            @if (auth()->check())
                                             <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
+                                            @else
+                                            <input type="hidden" name="id_client" value="">
+                                            @endif
                                             <input type="hidden" name="prod_name" value="{{$prod->nom_produit}}">
                                             <input type="hidden" name="prod_price" value="{{$prod->prix}}">
                                             <input type="hidden" name="img_prod" value="{{$prod->prod}}">
