@@ -264,7 +264,43 @@ header .first form #search{
 }
 
 
+/* la section */
 
+.les_article{
+    display: block;
+}
+
+.box_article_fashion{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows: repeat(2,auto);
+    gap: 20;
+}
+.box_ori{
+    border: var(--border);
+    margin: 1rem;
+}
+.img_articles{
+    width: 100%;
+    height: 40rem; 
+}
+.img_articles img{
+    width: 100%;
+    height: 100%;
+}
+.details_fashion{
+    display: block;
+    text-align: center;
+    background-color: antiquewhite;
+    padding: 2rem;
+}
+.details_fashion a{
+    text-align: center;
+    color: var(--black);
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
 
 
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/couture.css">
+    <link rel="stylesheet" href="CSS/animation.css">
     {{-- <link rel="stylesheet" href="CSS/compte.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fashion House</title>
@@ -38,7 +39,7 @@
                 <div class="icons">
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
                     <a href="{{route('mon.panier')}}"><i class="fa fa-shopping-cart"><span class="badge bg-info">{{$counts}}</span></i></a>
-                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
+                    <a href="{{route('mes.vues')}}"><i class="fa-regular fa-eye"><span class="badge bg-info">{{$all_view}}</span></i></a>
                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
                 <!-- class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" -->
                 </div>
@@ -67,11 +68,11 @@
             @if(isset($request))
                     @if($request == 'couture' || $request == 'profils' || $request == 'myfashion')
                         <div class="back" style="display: none;">
-                            <a href="/couture" class="btn_first">Commencer Ma Session</a>
+                            <a href="/couture" id="top_animation" class="btn_first">Commencer Ma Session</a>
                         </div>
                     @else
                         <div class="back">
-                            <a href="/couture" class="btn_first">Commencer Ma Session</a>
+                            <a href="/couture" id="top_animation" class="btn_first">Commencer Ma Session</a>
                         </div>
                     @endif 
             @endif
@@ -80,6 +81,8 @@
 
     </div>
 
+
+    
 
     <!-- les choix pour inscriptions -->
     <div class="modal fade" id="inscription" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -243,6 +246,22 @@
     </div>
   </div>
   
+  <section class="flex" id="animation_all">
+    <div class="boite_animation">
+        <div class="spinner-grow m-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow m-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow m-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow m-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+  </section>
 
 <div class="container">
     <section class="Service" id="Service">
@@ -304,7 +323,22 @@
                                         </form>
 
                                         {{-- <a href="{{route('ajouter.panier',$prod->id) }}"><i class="fa fa-shopping-cart"></i></a> --}}
-                                        <i class="fa regular fa-eye"></i>
+                                        <form action="{{route('article.view')}}" method="POST">
+                                            @csrf
+
+                                            @if (auth()->check())
+                                            <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
+                                            @else
+                                            <input type="hidden" name="id_client" value="">
+                                            @endif
+                                            <input type="hidden" name="prod_id" value="{{$prod->id}}">
+                                            <input type="hidden" name="prod_iduser" value="{{$prod->iduser}}">
+                                            <input type="hidden" name="prod_price" value="{{$prod->prix}}">
+                                            <input type="hidden" name="img_prod" value="{{$prod->nom_produit}}">
+                                            <input type="hidden" name="image" value="{{$prod->prod}}">
+                                            <button type="submit"><i class="fa regular fa-eye"></i></button>
+                                        </form>
+                                        
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                 </div>
@@ -334,7 +368,21 @@
                                             <button type="submit"><i class="fa fa-shopping-cart"></i></button>
                                         </form>
                                         {{-- <a href="{{route('ajouter.panier',$prod->id) }}"><i class="fa fa-shopping-cart"></i></a> --}}
-                                        <i class="fa regular fa-eye"></i>
+                                        <form action="{{route('article.view')}}" method="POST">
+                                            @csrf
+
+                                            @if (auth()->check())
+                                            <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
+                                            @else
+                                            <input type="hidden" name="id_client" value="">
+                                            @endif
+                                            <input type="hidden" name="prod_id" value="{{$prod->id}}">
+                                            <input type="hidden" name="prod_iduser" value="{{$prod->iduser}}">
+                                            <input type="hidden" name="prod_price" value="{{$prod->prix}}">
+                                            <input type="hidden" name="img_prod" value="{{$prod->nom_produit}}">
+                                            <input type="hidden" name="image" value="{{$prod->prod}}">
+                                            <button type="submit"><i class="fa regular fa-eye"></i></button>
+                                        </form>
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                 </div>
@@ -443,7 +491,20 @@
     <p>&copy; tous drois reserver | kone hadou</p>
     </div>
     </footer>
+    <script>
+        document.getElementById('top_animation').addEventListener('click', function() {
+        // Afficher la page de chargement
+        document.getElementById('animation_all').style.display = 'block';
 
+        // Utilisez setTimeout pour masquer la page de chargement après un certain délai (par exemple, 500 millisecondes)
+        setTimeout(function() {
+            document.getElementById('animation_all').style.display = 'none';
+            // Affichez les résultats de la recherche ici
+        }, 1000);  
+
+        });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

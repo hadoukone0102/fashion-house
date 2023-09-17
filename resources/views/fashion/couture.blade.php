@@ -31,121 +31,26 @@
 
 <section class="operation">
     <div class="resultAction">
-        <div class="box_result">
-            <div class="detail_fashion">
-                <span class="name">KONE HADOU</span>
-                <h3>vile : Abidjan, Quartier: Angré chateaux</h3>
-                <p>Experience : 10 ans</p>
-                <p>Type de Couture : Hommes et Femmes</p>
-                <p id="contact" >Contact : 0595640996</p>
-                <a href="#" class="btn">Selectionner</a>
+        
+        @foreach ($req as $reqs)
+            <div class="box_result">
+                <div class="detail_fashion">
+                    <span class="name">{{ $reqs->nom}} {{ $reqs->prenom}}</span>
+                    <h3>ville : {{ $reqs->ville}}, Quartier:{{ $reqs->quartier}}</h3>
+                    <p>Experience : {{ $reqs->annee_exp}}</p>
+                    <p>Type de Couture :{{ $reqs->domaine}}</p>
+                    {{-- <p id="contact" >Contact : {{ $reqs->contact}}</p> --}}
+                    <a href="{{route('myfashion.couture', ['iduser' =>$reqs->id]) }}" class="btn">Selectionner</a>
+                </div>
+                <div class="status_fashion">
+                    <span>En ligne</span>
+                </div>
             </div>
-            <div class="status_fashion">
-                <span>En ligne</span>
-            </div>
-        </div>
-        <div class="box_result">
-            <div class="detail_fashion">
-                <span class="name">KONE HADOU</span>
-                <h3>vile : Abidjan, Quartier: Angré chateaux</h3>
-                <p>Experience : 10 ans</p>
-                <p>Type de Couture : Hommes et Femmes</p>
-                <p id="contact">Contact : 0595640996</p>
-                <a href="#" class="btn">Selectionner</a>
-            </div>
-            <div class="status_fashion">
-                <span>En ligne</span>
-            </div>
-        </div>
+         @endforeach 
     </div>
 </section>
 
 
-<section class="blog" id="blog">
-    <div class="blog_part">
-        <div class="blog_grild">
-            <div class="box_blog">
-                <div class="boite">
-                    <div class="perso">
-                    <img src="img/blog/user1.png" alt="couturier">
-                    </div>
-                </div>
-                <div class="text_box">
-                    <p>
-                    Il est avec une grande admiration que je souhaite exprimer 
-                    toute mon éloge pour votre remarquable talent dans l'art de la couture.
-                     Votre créativité et votre maîtrise des tissus sont tout simplement époustouflantes,
-                      et chaque pièce que vous créez est une véritable œuvre d'art.
-                    </p>
-                </div>
-                <div class="atalicour">
-                    <div class="icon1">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <div class="icon2">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">Voir plus...</a>
-            </div>
-
-            <div class="box_blog">
-                <div class="boite">
-                    <div class="perso">
-                    <img src="img/blog/user1.png" alt="couturier">
-                    </div>
-                </div>
-                <div class="text_box">
-                    <p>
-                    Vos créations reflètent une harmonie parfaite entre l'innovation et l'élégance intemporelle
-                    . Chaque couture est soigneusement pensée, et votre souci du détail est absolument remarquable.
-                     Vous avez le don de transformer de simples morceaux de tissu en des 
-                    vêtements qui célèbrent la beauté et l'individualité de chaque personne qui les porte.
-                    </p>
-                </div>
-                <div class="atalicour">
-                    <div class="icon1">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <div class="icon2">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">Voir plus...</a>
-            </div>
-
-            <div class="box_blog">
-            <div class="boite">
-                    <div class="perso">
-                    <img src="img/blog/user1.png" alt="couturier">
-                    </div>
-                </div>
-                <div class="text_box">
-                    <p>
-                    Au-delà de votre talent indéniable, votre dévouement envers votre métier est une source d'inspiration pour tous ceux
-                     qui vous entourent. Vous travaillez sans relâche pour perfectionner votre art et offrir à vos clients des vêtements de la plus haute qualité.
-                     Votre professionnalisme et votre approche méticuleuse font de vous un modèle à suivre dans l'industrie de la mode.
-                    </p>
-                </div>
-                <div class="atalicour">
-                    <div class="icon1">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <div class="icon2">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                </div>
-                <a href="#" class="btn">Voir plus...</a>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 @endsection

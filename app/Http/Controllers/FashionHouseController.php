@@ -28,7 +28,11 @@ class FashionHouseController extends Controller
         $path = parse_url($url,PHP_URL_PATH);
         $seg = explode('/', $path);
         $result = $seg[1];
-        return view('Fashion.couture',['request' => $result]);
+        $all_fashion = Fashion::all();
+        return view('Fashion.couture',[
+            'req' =>$all_fashion,
+            'request' => $result
+        ]);
     }
 
     public function Service_livreur(){
@@ -146,7 +150,6 @@ class FashionHouseController extends Controller
         return view('Fashion.Action_livreur',['AllData' => $data_livreur]);
     }
 
-
     public function Traitement_couturier(Request $request){
 
         $data_fashion =$request->validate([
@@ -244,7 +247,6 @@ class FashionHouseController extends Controller
     }
 
 
-
     public function Search_fashion(Request $request) {
         $url = $request->url();
         $path = parse_url($url,PHP_URL_PATH);
@@ -289,11 +291,13 @@ class FashionHouseController extends Controller
     public function showUserProfile($iduser,$idprod) {
         // la liste de mes produits
         $data_produit = produits::all();
+
     /*
         si l'utilisateur est connecté
         si le mail qu'il a utiliser pour ce connecter est égale au mail qui existe dans ma bd
         si non il couturier
     */
+
         if(auth()->check()){
             $user_connect_email = auth()->user()->email;
             $user_co = Posts::where('email', $user_connect_email )->exists();
@@ -303,9 +307,11 @@ class FashionHouseController extends Controller
 
         $user = Fashion::where('email', $iduser)->firstOrFail(); // Récupère l'utilisateur avec l'ID spécifié
         $prods = produits::findOrFail($idprod);
-
+        // je veux afficher toutes les publication du couturier selectionner sur la page Hover
+        $all_article_user = produits::where('iduser',$iduser)->paginate(20); 
+    
         return view('Details.All',[
-
+            'key_article' => $all_article_user,
             'userkey' => $user ,
             'product_key' => $prods,
             'user_co' => $user_co,
@@ -314,6 +320,18 @@ class FashionHouseController extends Controller
 
     }
 
+    public function Detail_user_couture($iduser){
+
+        $all_data_user = Fashion::where('id',$iduser)->firstOrFail();
+        $emai_user_selected = $all_data_user->email;
+        // selectionnons toutes les publication de $email_user_selected
+        $all_for_user_selected = produits::where('iduser',$emai_user_selected)->paginate(20);
+        return view('Details.Search',[
+            "userkey" => $all_data_user,
+            "key_article"=> $all_for_user_selected,
+        ]);
+
+    }
 
     public function Se_conneter_compte_exist(){
 

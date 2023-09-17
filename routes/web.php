@@ -38,6 +38,7 @@ Route::post('/myfashion',[FashionHouseController::class,'Search_fashion']);
 
 // information sur le rpfils de l'utiisateur connecté 
 Route::get('/myfashion/{iduser}/{idprod}', [FashionHouseController::class, 'showUserProfile'])->name('myfashion.fave');
+Route::get('/myfashion/{iduser}',[FashionHouseController::class, 'Detail_user_couture'])->name('myfashion.couture');
 
 // information pour enregistremnt d'un produit
 Route::post('/produits', [ProoduitController::class,'CreateProduct']);
@@ -50,10 +51,10 @@ Route::get('/test',[ProoduitController::class,'getProduct'] );
 
 
 // les routes pour mon panier
-// Route::post('/panier/ajouter',[CartController::class,'store'])->name('cart.store');
+Route::get('article/delete/{id}',[HomeController::class,'supr_arti'])->name('destroy_arti');
 Route::get('/monpanier',[HomeController::class, 'Afficher_panier'])->name('mon.panier');
+Route::get('/Views', [HomeController::class ,'My_Views'])->name('mes.vues');
 // les routes pour mon panier
-
 
 
 Route::get('/dashboard', function () {
@@ -90,6 +91,7 @@ Route::middleware('auth')->group(function () {
 
    // protection de la route du panier
    Route::post('/panier/ajouter',[CartController::class,'store'])->name('cart.store');
+   Route::post('/view/ajouter',[CartController::class, 'add_view'])->name('article.view');
 });
 
 require __DIR__.'/auth.php';

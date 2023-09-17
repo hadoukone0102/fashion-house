@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Panier;
+use App\Models\Views;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -102,6 +103,31 @@ class CartController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function add_view(Request $request){
+
+        // Gestion des vues
+        if (auth()->check()) {
+            $id_client = auth()->user()->email;
+        } else {
+            $id_client = null;
+        }
+
+         // Vérifiez d'abord si l'article existe déjà dans le panier
+        $existingCartItem = Views::where('id_article', $request->prod_id)
+                            ->where('id_client', $id_client)
+                            ->first();
+                    
+        $newCartItem = new Views();
+        $newCartItem->prod_id = $request->prod_id;
+        $newCartItem->id_client = $request->id_client;
+        $newCartItem-> prod_iduser = $request->prod_iduser;
+        $newCartItem->img_prod = $request->img_prod;
+        $newCartItem->prod_price = $request->prod_price;
+        $newCartItem->image = $request->image;
+        $newCartItem->save();
+        return redirect()->back()->with('sucess','article ajouter à la vue');
     }
 }
 

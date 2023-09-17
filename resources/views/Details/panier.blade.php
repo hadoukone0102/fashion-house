@@ -69,7 +69,7 @@
                                             <div class="h3">{{ $details->prix_article * $details->quantiter}} cfa</div>
                                             <div class="action">
                                                 <a href="#" class="A1"><i class="fa fa-heart" aria-hidden="true"></i> save</a>
-                                                <a href="#" class="A2"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                                <a href="{{route('destroy_arti',['id' => $details->id])}}" class="A2"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
                                             </div>
                                         </div>
                                     </div>

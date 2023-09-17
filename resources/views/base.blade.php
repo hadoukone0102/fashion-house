@@ -31,31 +31,19 @@
         <nav class="navBar" id="none">
             <a href="/">Acceuil</a>
             <a href="#" id="services">Service</a>
-            <a href="#" id="produits">Produit</a>
-            <a href="#" id="blogs">Blog</a>
+            {{-- <a href="#" id="produits">Produit</a>
+            <a href="#" id="blogs">Blog</a> --}}
         </nav>
         <div id="menubar" class="fa fa-bars"></div>
         <div class="icons">
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
+            {{-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Favories"><i class="fa-regular fa-star"></i></a>
             <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-shopping-cart"></i></a>
             <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eyeModale"><i class="fa-regular fa-eye"></i></a>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a>
+            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Couturier"><i class="fa-solid fa-shirt"></i></a> --}}
         </div>
 
         {{-- <div class="">
-    @if (Route::has('login'))
-        <div class="">
-            @auth
-                <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
-            @else
-                <a href="{{ route('login') }}" class="">Log in</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="">Register</a>
-                @endif
-            @endauth
-        </div>
-      @endif
-  </div> --}}
+        --}}
 
         <nav class="navBar_link">
             @if (Route::has('login'))

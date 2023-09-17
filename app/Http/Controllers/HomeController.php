@@ -6,6 +6,7 @@ use App\Models\Fashion;
 use App\Models\Panier;
 use App\Models\Posts;
 use App\Models\produits;
+use App\Models\Views;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -56,12 +57,17 @@ class HomeController extends Controller
         }
         $select_all_email = Panier::where('id_client',$email_user_connecter)->paginate(25);
         $counts =$select_all_email->total();
+
+        $select_all_email = Views::where('id_client',$email_user_connecter)->paginate(25);
+        $all_view =$select_all_email->total();
+
         //dd($select_all_email->total());
         //$data_users = Fashion::where('email','kone@gmail.com')->first();
 
             return view('welcome',[
                 'data_panier' => $select_all_email,
                 'counts' => $counts,
+                'all_view' => $all_view,
                 'user_co' => $user_co,
                 'produit_of_couturierA' => $produit_of_couturierA,
                 'produit_of_couturierB' => $produit_of_couturierB,
@@ -69,7 +75,13 @@ class HomeController extends Controller
             ]);
     }
 
+    public function supr_arti($id){
+        $article_delete = Panier::findOrFail($id);
+        $article_delete->delete();
+        return redirect('/monpanier')->with('success', 'Article supprimé avec succès');
+    }
 
+    
     public function Ajouter_panier($id){
         $panier_prod = produits::findOrFail($id);
         $panier = session()->get('panier',[]);
@@ -103,6 +115,20 @@ class HomeController extends Controller
             'data_panier' => $select_all_email,
             'counts' => $counts,
         ]);
+    }
+
+    public function My_Views(){
+        // selectionnons tous les élément dans la base de donnée ou le mail correspond à celui de l'utilisateur,
+        if(auth()->check()){
+            $email_user_connecter = auth()->user()->email;
+        }else{
+            $email_user_connecter = null;
+        }
+        $select_all_email = Views::where('id_client',$email_user_connecter)->paginate(25);
+        return view('Details.views',[
+            'data_views' => $select_all_email,
+        ]);
+
     }
 
 }

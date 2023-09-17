@@ -38,8 +38,8 @@
                         <h3>ville : {{ $seach_f->ville}}, Quartier:{{ $seach_f->quartier}}</h3>
                         <p>Experience : {{ $seach_f->annee_exp}}</p>
                         <p>Type de Couture :{{ $seach_f->domaine}}</p>
-                        <p id="contact" >Contact : {{ $seach_f->contact}}</p>
-                        <a href="/myfashion/{{ $seach_f->id }}" class="btn">Selectionner</a>
+                        {{-- <p id="contact" >Contact : {{ $seach_f->contact}}</p> --}}
+                        <a href="{{ route('myfashion.couture', ['iduser' => $seach_f->id]) }}" class="btn">Selectionner</a>
                     </div>
                     <div class="status_fashion">
                         <span>En ligne</span>
@@ -53,8 +53,8 @@
                         <h3>ville : {{ $reqs->ville}}, Quartier:{{ $reqs->quartier}}</h3>
                         <p>Experience : {{ $reqs->annee_exp}}</p>
                         <p>Type de Couture :{{ $reqs->domaine}}</p>
-                        <p id="contact" >Contact : {{ $reqs->contact}}</p>
-                        <a href="/myfashion/{{ $reqs->id }}" class="btn">Selectionner</a>
+                        {{-- <p id="contact" >Contact : {{ $reqs->contact}}</p> --}}
+                        <a href="{{route('myfashion.couture', ['iduser' =>$reqs->id]) }}" class="btn">Selectionner</a>
                     </div>
                     <div class="status_fashion">
                         <span>En ligne</span>
@@ -68,8 +68,7 @@
                         <h3>ville : {{ $search_quar->ville}}, Quartier:{{ $search_quar->quartier}}</h3>
                         <p>Experience : {{ $search_quar->annee_exp}}</p>
                         <p>Type de Couture :{{ $search_quar->domaine}}</p>
-                        <p id="contact" >Contact : {{ $search_quar->contact}}</p>
-                        <a href="/myfashion/{{ $search_quar->id }}" class="btn">Selectionner</a>
+                        <a href="{{ route('myfashion.couture', ['iduser' =>$search_quar->id]) }}" class="btn">Selectionner</a>
                     </div>
                     <div class="status_fashion">
                         <span>En ligne</span>

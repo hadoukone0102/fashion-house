@@ -117,69 +117,77 @@
             </div>
             {{-- première partie du tableau --}}
        </div>
+
+       <!-- les articles tu couturier -->
+    </section>
+    <section class="les_article">
+        <h3 class="text-center text-3xl text-blue-900 font-bold">Quelques Article de {{$userkey->prenom}}</h3>
+        <div class="box_article_fashion">
+            @foreach ($key_article as $key_art)
+                <div class="box_ori">
+                    <div class="img_articles">
+                        <img src="/{{$key_art->iduser}}/{{$key_art->prod}}" alt="article" alt="">
+                    </div>
+                    <div class="details_fashion">
+                        <a href="#">Ajouter au panier</a>
+                    </div>
+                </div>
+            @endforeach
+
+            {{-- <div class="box_ori">
+                <div class="img_articles">
+                    <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                </div>
+                <div class="details_fashion">
+                    <a href="#">Ajouter au panier</a>
+                </div>
+            </div>
+            <div class="box_ori">
+                <div class="img_articles">
+                    <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                </div>
+                <div class="details_fashion">
+                    <a href="#">Ajouter au panier</a>
+                </div>
+            </div>
+
+
+            <div class="box_ori">
+                <div class="img_articles">
+                    <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                </div>
+                <div class="details_fashion">
+                    <a href="#">Ajouter au panier</a>
+                </div>
+            </div>
+            <div class="box_ori">
+                <div class="img_articles">
+                    <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                </div>
+                <div class="details_fashion">
+                    <a href="#">Ajouter au panier</a>
+                </div>
+            </div>
+            <div class="box_ori">
+                <div class="img_articles">
+                    <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article" alt="">
+                </div>
+                <div class="details_fashion">
+                    <a href="#">Ajouter au panier</a>
+                </div>
+            </div> --}}
+        </div>
     </section>
 
-
-
-
-    {{-- <section class="detail_user">
-        <div class="boite_detail">
-            
-            <div class="img_produit">
-                @php
-                    $email_fashion = $userkey->email;
-                @endphp
-                <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="article">
-            </div>
-            <div class="detail_fashion">
-                <div class="securer_info">
-                    <h3>Couturier : <span>{{$userkey->nom}} {{$userkey->prenom}}</span></h3>
-                    <h3> Lieu : 
-                        <span>Ville : {{$userkey->ville}}</span>
-                        <span>Quartier : {{$userkey->quartier}}</span>
-                    </h3>
-                    
-                    <div class="important">
-                        <h3>Prix de l'article : <span class="unique">{{$product_key->prix}}F cfa </span></h3>
-                        <p>Description de l'article : <span class="desc">{{$product_key->description}}</span></p>
-                    </div>
-                </div>
-                <div class="descrip">
-                    <h3>Email du couturier: <span> {{$userkey->email}} </span></h3>
-                    <a class="btn">Contacter le Couturier: <span>{{$userkey->contact}} </span></a>
-                </div>
-
-                <div class="grild_article">
-                    <div class="box_article">
-                        <div class="img_arti">
-                            <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="">
-                        </div>
-                    </div>
-                    <div class="box_article">
-                        <div class="img_arti">
-                            <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="">
-                        </div>
-                    </div>
-                    <div class="box_article">
-                        <div class="img_arti">
-                            <img src="/{{$email_fashion}}/{{$product_key->prod}}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <form action="{{route('cart.store')}}" method="POST">
-                    @csrf
-                    <input type="hidden" name="id_prod" value="{{$product_key->id}}">
-                    <input type="hidden" name="id_client" value="{{auth()->user()->email}}">
-                    <input type="hidden" name="prod_name" value="{{$product_key->nom_produit}}">
-                    <input type="hidden" name="prod_price" value="{{$product_key->prix}}">
-                    <input type="hidden" name="img_prod" value="{{$product_key->prod}}">
-                   <button type="submit" class="btns">Ajouter Au panier</button>
+    {{-- <section class="new_leter">
+        <div class="fashion_new">
+            <div class="form_new_letter">
+                <form action="" id="letter">
+                    <label for="Your_email">Laisse ton E-mail pour recevoir tous les nouveauté de {{$userkey->nom}}</label>
+                    <input type="text" placeholder="">
                 </form>
-           
             </div>
-           
         </div>
-        
     </section> --}}
 
   </body>
