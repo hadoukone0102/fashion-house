@@ -106,7 +106,7 @@
                         </div>
                         <div class="fashion_contact">
                             <div class="number_fah">
-                                <span>Contact :<i class="fa fa-phone" aria-hidden="true"></i></span>
+                                <span>Email :<i class="fa fa-phone" aria-hidden="true"></i></span>
                             </div>
                             <h3>{{$userkey->email}}</h3>
                         </div>

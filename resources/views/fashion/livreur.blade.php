@@ -1,4 +1,4 @@
-@extends('fashion')
+{{-- @extends('fashion')
 @section('title','Services livreur')
 
 @section('livreur')
@@ -90,4 +90,4 @@
 
 
 
-@endsection
+@endsection --}}

@@ -25,8 +25,8 @@ class HomeController extends Controller
         $couturierB = "hadou@gmail.com";
 
         // Selection des produit par couturier
-        $produit_of_couturierA = produits::where('iduser',$couturierA)->paginate(3);
-        $produit_of_couturierB = produits::where('iduser',$couturierB)->paginate(3);
+        $produit_of_couturierA = produits::where('iduser',$couturierA)->paginate(25);
+        $produit_of_couturierB = produits::where('iduser',$couturierB)->paginate(25);
 
         //affichage des éléments
         $data_produit = produits::all();

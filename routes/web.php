@@ -25,14 +25,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'walcome_f_h'])->name('welcome');
 Route::get('/couture', [FashionHouseController::class, 'Couturier_page']);
 Route::get('/livreur', [FashionHouseController::class,'Service_livreur']);
+
+/* Mon authentification perso  */
 Route::get('/inscription', [FashionHouseController::class, 'Inscription_user']);
 Route::get('/client', [FashionHouseController::class, 'Compte_client']);
 Route::get('/livreur-compte', [FashionHouseController::class, 'Compte_livreur']);
 Route::get('/profils', [FashionHouseController::class, 'Profils']);
+/* Mon authentification perso  */
+
 // traitement des formulaire 
 Route::post('/traitement',[FashionHouseController::class, 'processForm']);
 Route::post('/compte_livreur_action', [FashionHouseController::class, 'traitement_compte_livreur']);
 Route::post('/action_couture', [FashionHouseController::class, 'Traitement_couturier']);
+
 // gestion de la partie couture .....
 Route::post('/myfashion',[FashionHouseController::class,'Search_fashion']);
 
@@ -61,8 +66,8 @@ Route::get('/dashboard', function () {
      //affichage des éléments
      $us = strtolower(auth()->user()->email);
      $iduser = strtolower('iduser');
-     $data_connecter = produits::where($iduser, $us)->paginate(3);
-     $data_produit = produits::paginate(3);
+     $data_connecter = produits::where($iduser, $us)->paginate(25);
+     $data_produit = produits::paginate(25);
     return view('dashboard',[
         'connecter' => $data_connecter,
         'produits' => $data_produit

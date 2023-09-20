@@ -12,6 +12,11 @@
     {{-- <link rel="stylesheet" href="CSS/compte.css"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fashion House</title>
+      <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+     <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <script src="JS/script.js" defer></script>
     <script src="JS/couture.js" defer></script>
     <script src="JS/welcom.js" defer></script>
@@ -73,16 +78,118 @@
                     @else
                         <div class="back">
                             <a href="/couture" id="top_animation" class="btn_first">Commencer Ma Session</a>
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="img/main.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main1.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main2.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main3.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main4.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main5.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main6.png" alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="img/main7.png" alt="">
+                                    </div>
+                                  {{-- <div class="swiper-slide">Slide 9</div> --}}
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                                <div class="autoplay-progress">
+                                  <svg viewBox="0 0 48 48">
+                                    <circle cx="24" cy="24" r="20"></circle>
+                                  </svg>
+                                  <span></span>
+                                </div>
+                              </div>
+
+
                         </div>
                     @endif 
             @endif
+
+
+            <style>
+                /* html,
+                body {
+                  position: relative;
+                  height: 100%;
+                }
+            
+                body {
+                  background: #eee;
+                  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+                  font-size: 14px;
+                  color: #000;
+                  margin: 0;
+                  padding: 0;
+                }
+             */
+                .swiper {
+                    width: 100%;    
+                    height: 100%;
+                }
+            
+                .swiper-slide {
+                    width: 100%;    
+                    height: 70rem;
+                }
+            
+                .swiper-slide img {
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+            
+                .autoplay-progress {
+                  position: absolute;
+                  right: 16px;
+                  bottom: 16px;
+                  z-index: 10;
+                  width: 48px;
+                  height: 48px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-weight: bold;
+                  color: var(--swiper-theme-color);
+                }
+            
+                .autoplay-progress svg {
+                  --progress: 0;
+                  position: absolute;
+                  left: 0;
+                  top: 0px;
+                  z-index: 10;
+                  width: 100%;
+                  height: 100%;
+                  stroke-width: 4px;
+                  stroke: var(--swiper-theme-color);
+                  fill: none;
+                  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+                  stroke-dasharray: 125.6;
+                  transform: rotate(-90deg);
+                }
+              </style>
   
         </header>
 
     </div>
-
-
-    
 
     <!-- les choix pour inscriptions -->
     <div class="modal fade" id="inscription" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -110,20 +217,19 @@
         </div>
     </div>
   
-  
     <!-- mon panier -->
     <style>
-        /* Styles pour le contenu scrollable */
-.scrollable-content {
-    max-height: 400px; 
-    overflow-y: auto; 
-    width: auto;
-    padding: 15px;
-}
-#my_th{
-    font-size: 2rem;
-    color: #2c2c54;
-}
+                /* Styles pour le contenu scrollable */
+        .scrollable-content {
+            max-height: 400px; 
+            overflow-y: auto; 
+            width: auto;
+            padding: 15px;
+        }
+        #my_th{
+            font-size: 2rem;
+            color: #2c2c54;
+        }
 
     </style>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -264,45 +370,58 @@
   </section>
 
 <div class="container">
+
+    <!-- les services -->
+
     <section class="Service" id="Service">
     
         <div class="content_service">
-            <div class="grild_service">
+            <div class="grild_service" id="premier_serv">
                 <div class="img">
                     <img src="img/sevice1.png" alt="">  
                 </div>
                 <div class="details">
                     {{-- <p>Fashion House le meilleur</p> --}}
                 </div>
-                <a href="/couture" class="btn">Débuter une Session</a>
+                <a href="/couture" class="btn">Chercher un Couturier</a>
             </div>
-            <div class="grild_service">
+            <div class="grild_service" id="premier_second">
                 <div class="img">
-                <img src="img/service2.png" alt="">
+                <img src="img/part/00.png" alt="">
                 </div>
                 <div class="details">
                     {{-- <p>Fashion House le meilleur</p> --}}
                 </div>
-                <a href="/livreur" class="btn">Les services de Livreur</a>
+                <a href="/livreur" class="btn">Prêt à porter</a>
             </div>
         </div>
 
     </section>
+
+     <!-- les services fin -->
+
     <h1 class="titre">Les Plus Utilisés chez <span>Fashion House</span></h1>
+
     @if (session('sucess'))
         <div class="alert alert-success">
             {{session('sucess')}}
         </div>
     @endif
+
     <section class="produit" id="produit">
         <!-- <div class="produits_ctn"> -->
-            <div class="grilds_main">
+            <div class="grilds_main" >
 
                         @foreach ($produit_of_couturierA as $prod)
-                            <div class="grilds_produits">
+                            <div class="grilds_produits" >
+                                <!-- images -->
                                 <div class="img_prod">
                                     <img src="kone@gmail.com/{{$prod->prod}}" alt="">
                                 </div>
+                                <!-- images -->
+
+                                <!-- decoration  -->
+
                                 <div class="decoration">
                                     <div class="decora">
                                         <i class="fa-regular fa-star"></i>
@@ -342,7 +461,13 @@
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
+                                <div class="details_articles">
+                                    <span>Prix : <h3>{{ $prod->prix }}</h3></span>
+                                    <span>{{$prod->nom_produit}}</span>
+                                    {{-- <span>Taille : <h3>XM,XL</h3></span> --}}
+                                </div>
+                                <!-- images -->
+                                <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">Voir plus </a>
                             </div>
                         @endforeach  
 
@@ -386,13 +511,18 @@
                                         <i class="fa-solid fa-shirt"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">joindre le Couturier </a>
+
+                                <div class="details_articles">
+                                    <span>Prix : <h3>20000</h3></span>
+                                    <span>Robe bien styler</span>
+                                    {{-- <span>Taille : <h3>XM,XL</h3></span> --}}
+                                </div>
+                                <a href="{{ route('myfashion.fave', ['iduser' => $prod->iduser, 'idprod' => $prod->id])}}" class="btn">Voir plus </a>
                             </div>
                         @endforeach  
                         
         </div>
     </section>
-
 
     <section class="blog" id="blog">
         <div class="blog_part">
@@ -421,7 +551,7 @@
                             <i class="fa-solid fa-shirt"></i>
                         </div>
                     </div>
-                    <a href="#" class="btn">Voir plus...</a>
+                    {{-- <a href="#" class="btn">Voir plus...</a> --}}
                 </div>
 
                 <div class="box_blog">
@@ -448,7 +578,7 @@
                             <i class="fa-solid fa-shirt"></i>
                         </div>
                     </div>
-                    <a href="#" class="btn">Voir plus...</a>
+                    {{-- <a href="#" class="btn">Voir plus...</a> --}}
                 </div>
 
                 <div class="box_blog">
@@ -474,7 +604,7 @@
                             <i class="fa-solid fa-shirt"></i>
                         </div>
                     </div>
-                    <a href="#" class="btn">Voir plus...</a>
+                    {{-- <a href="#" class="btn">Voir plus...</a> --}}
                 </div>
             </div>
         </div>
@@ -484,14 +614,80 @@
 <!-- code bootstrap -->
 
 </div>
-
-    <footer class="footer">
-    <div class="content_ftr">
-    <h3> Fashion House votre service toujour disponible </h3>
-    <p>&copy; tous drois reserver | kone hadou</p>
-    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer_one">
+                <div class="lo">
+                    <a href="#" class="logo"><span>F</span>ashion<span>_</span><span>H</span>ouse</a>
+                </div>
+                <div class="code_qr">
+                    <span>Abidjan,Cocody angré chateaux</span>
+                    <span>&abreve; contact 0595640996</span>
+                    <span>konehadou0201@gmail.com</span>
+                </div>
+            </div>
+            <div class="architec">
+                <h3>Architechture</h3>
+                <nav>
+                    <a href="#">Acceuil</a>
+                    <a href="#">service</a>
+                    <a href="#">Produit</a>
+                    <a href="#">Blog</a>
+    
+                </nav>
+            </div>
+            <div class="architec">
+                <h3>Categories</h3>
+                <nav>
+                    <a href="#">coutures</a>
+                    <a href="#">Ventes</a>
+                    <a href="#">livraison</a>
+                    {{-- <a href="#">Blog</a> --}}
+    
+                </nav>
+            </div>
+            <div class="followers">
+                <h3>Follow me</h3>
+                <nav>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-square-twitter"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                </nav>
+            </div>
+        </div>
+    {{-- <div class="content_ftr">
+        <h3> Fashion House votre service toujour disponible </h3>
+        <p>&copy; tous drois reserver | kone hadou</p>
+    </div> --}}
+            <div class="finish">
+                <div class="fini_first">
+                    <span>teams</span>
+                    <span>privacy</span>
+                    <span>family</span>
+                </div>
+                <div class="fini_second">
+                    <p>&copy; tous drois reserver | kone hadou</p>
+                </div>
+            </div>
     </footer>
+   
     <script>
+
+                
+        window.addEventListener('load', () => {
+            const loadingPage = document.getElementById('animation_all');
+            
+            // Affiche l'élément au chargement de la page
+            loadingPage.style.display = 'block';
+
+            // Après 2,5 secondes (2500 millisecondes), masque l'élément
+            setTimeout(() => {
+                loadingPage.style.display = 'none';
+            }, 2000);
+        });
+
+
         document.getElementById('top_animation').addEventListener('click', function() {
         // Afficher la page de chargement
         document.getElementById('animation_all').style.display = 'block';
@@ -500,11 +696,38 @@
         setTimeout(function() {
             document.getElementById('animation_all').style.display = 'none';
             // Affichez les résultats de la recherche ici
-        }, 1000);  
+        }, 2000);  
 
         });
 
     </script>
+     <!-- Initialize Swiper -->
+  <script>
+    const progressCircle = document.querySelector(".autoplay-progress svg");
+    const progressContent = document.querySelector(".autoplay-progress span");
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          progressCircle.style.setProperty("--progress", 1 - progress);
+          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+      }
+    });
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

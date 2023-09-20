@@ -208,22 +208,51 @@
         @yield('Operation')
     </div>
 
-    @if($request == 'profils' || $request == 'myfashion')
-    <footer class="footer" style="display: none;">
-      <div class="content_ftr">
-        <h3> Fashion House votre service toujour disponible</h3>
-        <p>&copy; tous drois reserver | kone hadou</p>
-      </div>
-    </footer>
-    @else
     <footer class="footer">
-      <div class="content_ftr">
-        <h3> Fashion House votre service toujour disponible </h3>
-        <p>&copy; tous drois reserver | kone hadou</p>
+      <div class="footer_one">
+          <div class="lo">
+              <a href="#" class="logo"><span>F</span>ashion<span>_</span><span>H</span>ouse</a>
+          </div>
+          <div class="code_qr">
+              <span>Abidjan,Cocody angré chateaux</span>
+              <span>&abreve; contact 0595640996</span>
+              <span>konehadou0201@gmail.com</span>
+          </div>
       </div>
-    </footer>
+      <div class="architec">
+          <h3>Architechture</h3>
+          <nav>
+              <a href="#">Acceuil</a>
+              <a href="#">service</a>
+              <a href="#">Produit</a>
+              <a href="#">Blog</a>
 
-    @endif
+          </nav>
+      </div>
+      <div class="architec">
+          <h3>Categories</h3>
+          <nav>
+              <a href="#">coutures</a>
+              <a href="#">Ventes</a>
+              <a href="#">livraison</a>
+              {{-- <a href="#">Blog</a> --}}
+
+          </nav>
+      </div>
+      <div class="followers">
+          <h3>Follow me</h3>
+          <nav>
+              <i class="fa-brands fa-facebook-f"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-square-twitter"></i>
+              <i class="fa-brands fa-linkedin"></i>
+          </nav>
+      </div>
+  {{-- <div class="content_ftr">
+      <h3> Fashion House votre service toujour disponible </h3>
+      <p>&copy; tous drois reserver | kone hadou</p>
+  </div> --}}
+  </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>

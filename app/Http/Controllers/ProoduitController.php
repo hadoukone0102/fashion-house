@@ -15,8 +15,8 @@ class ProoduitController extends Controller
     public function index_admin(Request $request){
         
             $email_user_connecter = auth()->user()->email;
-            $mes_produits_publier = produits::where('iduser', $email_user_connecter)->paginate(3);
-
+            $mes_produits_publier = produits::where('iduser', $email_user_connecter)->paginate(25);
+            // dd($mes_produits_publier);
         return view('index',[
             'my_prod' => $mes_produits_publier,
         ]);

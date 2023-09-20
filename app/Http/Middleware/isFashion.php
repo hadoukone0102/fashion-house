@@ -21,7 +21,8 @@ class isFashion
         if(auth()->check()){
             $user_conn = auth()->user()->email;
             $select_user_conn = Fashion::where('email',$user_conn)->first();
-            $mes_produits_publier = produits::where('iduser', $user_conn)->paginate(3);
+            $mes_produits_publier = produits::where('iduser', $user_conn)->paginate(25);
+            // dd($mes_produits_publier);
             // Passer la variable $my_prod à la vue
             view()->share('my_prod', $mes_produits_publier);
             if($select_user_conn){
